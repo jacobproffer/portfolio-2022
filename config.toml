@@ -1,0 +1,7 @@
+baseURL = "https://jacobproffer-dev.netlify.app/"
+languageCode = "en-us"
+title = "Jacob Proffer"
+theme = "proffer"
+
+[params]
+  description = "Senior Front-End Developer at Elegant Seagulls."

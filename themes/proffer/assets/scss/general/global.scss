@@ -1,0 +1,59 @@
+:root {
+  --container: 1440px;
+  --container-gutter: calc((100vw - var(--container)) / 2);
+
+  --hero-background: clamp(4.63rem, calc(-2.45rem + 12.86vw), 9.13rem);
+
+  --white: #fff;
+  --black: #000;
+
+  @include screen-below($desktop) {
+    --container: 1280px;
+  }
+}
+
+*,
+*::after,
+*::before {
+  @include box-sizing(border-box);
+}
+
+::selection {
+  color: var(--brown);
+  background-color: var(--orange);
+}
+
+* {
+  &:focus {
+    outline: 2px dotted var(--brown);
+  }
+}
+
+html {
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.625;
+  color: var(--white);
+  background-color: var(--black);
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  transition: color .25s ease-in-out;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style-position: inside;
+}

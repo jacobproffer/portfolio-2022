@@ -1,0 +1,56 @@
+@mixin box-sizing($box-model) {
+  box-sizing: $box-model;
+}
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin screen-above($screen-size) {
+  @media screen and (min-width: $screen-size) {
+    @content;
+  }
+}
+
+@mixin screen-below($screen-size) {
+  @media screen and (max-width: ($screen-size - 1px)) {
+    @content;
+  }
+}
+
+@mixin screen-between($min-screen-size, $max-screen-size) {
+  @media screen and (min-width: $min-screen-size) and (max-width: ($max-screen-size - 1px)) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin ratio($width, $height) {
+  position: relative;
+
+  &::before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+
+  > .content {
+    position: absolute;
+    inset: 0;
+  }
+}
+
+@mixin update-ratio($width, $height) {
+  &::before {
+    padding-top: ($height / $width) * 100%;
+  }
+}

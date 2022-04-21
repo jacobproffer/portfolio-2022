@@ -1,0 +1,12 @@
+.intro {
+  position: relative;
+
+  p {
+    max-width: 36ch;
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: space-between;
+  }
+}
