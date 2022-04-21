@@ -1,12 +1,21 @@
-.intro {
+.section {
   // 320px at 1440px to 160px at 880px
   --intro-padding: clamp(10.00rem, calc(-5.71rem + 28.57vw), 20.00rem);
   position: relative;
-  padding: var(--intro-padding) 0 calc(var(--intro-padding) - 10px);
+  padding-bottom: calc(var(--intro-padding) - 10px);
+
+  &--padding-top {
+    padding-top: var(--intro-padding);
+  }
 
   p {
     max-width: 36ch;
     margin: 0;
+  }
+
+  &__grid {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__list {
@@ -28,6 +37,34 @@
 
     @include hover {
       text-decoration: underline;
+    }
+  }
+
+  &__image-list {
+    // 186px at 1440px to 94px at 880px
+    --image-list-gap: clamp(5.88rem, calc(-3.16rem + 16.43vw), 11.63rem);
+    row-gap: var(--image-list-gap);
+    margin-top: var(--image-list-spacing);
+  }
+
+  &__image {
+    // 670px at 1440px to 502px at 880px
+    --section-image-width: clamp(31.38rem, calc(14.88rem + 30.00vw), 41.88rem);
+    // 447px at 1440px to 335px at 880px
+    --section-image-height: clamp(20.94rem, calc(9.94rem + 20.00vw), 27.94rem);
+    position: relative;
+    width: var(--section-image-width);
+    height: var(--section-image-height);
+    overflow: hidden;
+
+    img {
+      @include size(100%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      object-fit: cover;
+      filter: saturate(0);
+      transform: translate(-50%, -50%);
     }
   }
 

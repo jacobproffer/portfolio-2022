@@ -94,3 +94,26 @@
   background-color: var(--white);
   border-radius: 50%;
 }
+
+.name-graphic {
+  position: absolute;
+  left: 0;
+  width: 100%;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--hero {
+    top: calc(var(--name-position) * -1);
+    z-index: 1;
+    mix-blend-mode: difference;
+  }
+
+  &--section {
+    top: var(--image-list-spacing);
+    z-index: -1;
+  }
+}
