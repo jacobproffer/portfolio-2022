@@ -19,13 +19,13 @@
 }
 
 ::selection {
-  color: var(--brown);
-  background-color: var(--orange);
+  color: var(--white);
+  background-color: var(--black);
 }
 
 * {
   &:focus {
-    outline: 2px dotted var(--brown);
+    outline: 1px solid var(--white);
   }
 }
 
