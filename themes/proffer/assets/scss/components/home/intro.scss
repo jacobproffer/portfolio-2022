@@ -9,11 +9,6 @@
     margin: 0;
   }
 
-  &__grid {
-    display: flex;
-    justify-content: space-between;
-  }
-
   &__list {
     // 285px at 1440px to 142px to 880px
     --intro-list-spacing: clamp(8.88rem, calc(-5.17rem + 25.54vw), 17.81rem);

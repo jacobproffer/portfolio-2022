@@ -10,6 +10,14 @@
   @include screen-below($desktop) {
     --container: 1280px;
   }
+
+  @include screen-below($desktopSm) {
+    --container: 1080px;
+  }
+
+  @include screen-below($laptopSm) {
+    --container: 810px;
+  }
 }
 
 *,

@@ -1,3 +1,8 @@
 .grid {
   display: grid;
+
+  &__site-grid {
+    position: relative;
+    grid-template-columns: 1fr 2fr;
+  }
 }
