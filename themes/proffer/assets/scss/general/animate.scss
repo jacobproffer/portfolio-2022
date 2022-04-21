@@ -16,28 +16,38 @@
 }
 
 @keyframes grain {
-  0%, 100% {
-    transform: translate(0, 0);
+  0% {
+    transform: translateX(0px,0px);
   }
-
   10% {
-    transform: translate(-5%, -10%);
+    transform: translate(-100px, 100px);
   }
-
+  20% {
+    transform: translate(150px, -100px);
+  }
   30% {
-    transform: translate(3%, -15%);
+    transform: translate(-100px,100px);
   }
-
+  40% {
+    transform: translate(100px, -150px);
+  }
   50% {
-    transform: translate(12%, 9%);
+    transform: translate(-100px, 200px);
   }
-
+  60% {
+    transform: translate(-200px, -100px);
+  }
   70% {
-    transform: translate(9%, 4%);
+    transform: translateY(50px, 100px);
   }
-
+  80% {
+    transform: translate(100px, -150px);
+  }
   90% {
-    transform: translate(-1%, 7%);
+    transform: translate(0px, 200px);
+  }
+  100% {
+    transform: translate(-100px, 100px);
   }
 }
 

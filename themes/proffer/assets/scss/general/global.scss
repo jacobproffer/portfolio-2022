@@ -7,8 +7,16 @@
   --white: #fff;
   --black: #000;
 
-  @include screen-below($desktop) {
+  @include screen-below($desktopSm) {
     --container: 1280px;
+  }
+
+  @include screen-below($desktopSm) {
+    --container: 1080px;
+  }
+
+  @include screen-below($laptopSm) {
+    --container: 810px;
   }
 }
 
@@ -19,13 +27,13 @@
 }
 
 ::selection {
-  color: var(--brown);
-  background-color: var(--orange);
+  color: var(--white);
+  background-color: var(--black);
 }
 
 * {
   &:focus {
-    outline: 2px dotted var(--brown);
+    outline: 1px solid var(--white);
   }
 }
 
