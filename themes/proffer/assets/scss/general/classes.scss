@@ -62,3 +62,10 @@
     animation:grain 1.5s steps(6) infinite;
   }
 }
+
+.size-48 {
+  --size-48-font-size: clamp(1.50rem, calc(-0.86rem + 4.29vw), 3.00rem);
+  font-size: var(--size-48-font-size);
+  text-transform: uppercase;
+  line-height: 1.25;
+}

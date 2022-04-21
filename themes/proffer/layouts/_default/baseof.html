@@ -17,13 +17,9 @@
 
     <title>
 
-      {{ if .IsHome }}
+      {{ block "title" . }}
 
-        {{ .Site.Title }} | {{ .Site.Params.subTitle }}
-
-      {{ else }}
-
-        {{ .Title }} | {{ .Site.Title }}
+        {{ .Site.Title }}
 
       {{ end }}
 

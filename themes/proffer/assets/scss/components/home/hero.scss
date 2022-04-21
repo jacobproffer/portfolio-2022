@@ -1,20 +1,19 @@
 .hero {
-  /* 135px at 1440px to 70px at 880px */
+  // 135px at 1440px to 70px at 880px
   --hero-top-padding: clamp(4.38rem, calc(-2.01rem + 11.61vw), 8.44rem);
-  // 320px at 1440px to 160px at 880px
-  --hero-bottom-padding: clamp(10.00rem, calc(-5.71rem + 28.57vw), 20.00rem);
   position: relative;
-  padding: var(--hero-top-padding) 0 var(--hero-bottom-padding);
+  padding-top: var(--hero-top-padding);
   overflow: hidden;
   text-align: center;
 
   &__background-wrap {
+    // 75px at 1440px to 38px at 880px
     --name-position: clamp(2.38rem, calc(-1.26rem + 6.61vw), 4.69rem);
     position: relative;
   }
 
   &__background {
-    /* 148px at 1440px to 74px at 880px */
+    // 148px at 1440px to 74px at 880px
     --background-margin: clamp(4.63rem, calc(-2.64rem + 13.21vw), 9.25rem);
     display: grid;
     grid-template-columns: 1fr 2fr 1.5fr;
@@ -53,7 +52,6 @@
   }
 
   &__copy {
-    --copy-font-size: clamp(1.50rem, calc(-0.86rem + 4.29vw), 3.00rem);
     position: absolute;
     bottom: 36px;
     left: 50%;
@@ -61,10 +59,7 @@
     max-width: 1800px;
     width: 100%;
     margin: 0;
-    font-size: var(--copy-font-size);
     transform: translateX(-50%);
-    text-transform: uppercase;
-    line-height: 1.25;
   }
 
   &__name-graphic {
@@ -80,12 +75,5 @@
       height: 100%;
       object-fit: cover;
     }
-  }
-
-  &__background-image {
-    position: absolute;
-    bottom: calc(var(--hero-bottom-padding) * -1);
-    left: 0;
-    z-index: -2;
   }
 }
