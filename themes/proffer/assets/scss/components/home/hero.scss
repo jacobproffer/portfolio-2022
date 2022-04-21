@@ -6,6 +6,18 @@
   overflow: hidden;
   text-align: center;
 
+  &::before {
+    @include size(80px, 100%);
+    position: absolute;
+    top: 0;
+    right: 8.5%;
+    z-index: 2;
+    background-color: var(--black);
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    content: "";
+  }
+
   &__background-wrap {
     // 75px at 1440px to 38px at 880px
     --name-position: clamp(2.38rem, calc(-1.26rem + 6.61vw), 4.69rem);
@@ -56,7 +68,7 @@
     position: absolute;
     bottom: 36px;
     left: 50%;
-    z-index: 2;
+    z-index: 3;
     max-width: 1800px;
     width: 100%;
     margin: 0;
