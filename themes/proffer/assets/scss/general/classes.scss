@@ -119,4 +119,8 @@
     top: var(--image-list-spacing);
     z-index: -1;
   }
+
+  &--footer {
+    bottom: -20px;
+  }
 }
