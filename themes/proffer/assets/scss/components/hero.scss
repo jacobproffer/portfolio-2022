@@ -7,11 +7,13 @@
   text-align: center;
 
   &::before {
-    @include size(80px, 100%);
+    --bar-sizes: clamp(2.50rem, calc(-1.43rem + 7.14vw), 5.00rem);
     position: absolute;
     top: 0;
     right: 8.5%;
     z-index: 2;
+    width: var(--bar-sizes);
+    height: 100%;
     background-color: var(--black);
     mix-blend-mode: overlay;
     pointer-events: none;

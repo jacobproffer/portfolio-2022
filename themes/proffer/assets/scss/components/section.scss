@@ -14,8 +14,12 @@
   }
 
   &__grid {
+    // 170px at 1440px to 85px at 880px
+    --section-grid-padding: clamp(5.31rem, calc(-3.04rem + 15.18vw), 10.63rem);
+    position: relative;
     display: flex;
     justify-content: space-between;
+    padding-right: var(--section-grid-padding);
   }
 
   &__list {
@@ -70,17 +74,23 @@
 
 
   &__background-image {
-    // 650px at 1440px to 325px at 880px
-    --background-image-position: clamp(20.31rem, calc(-11.61rem + 58.04vw), 40.63rem);
     position: absolute;
-    top: 0;
     left: 0;
     z-index: -2;
     pointer-events: none;
 
+    &--projects {
+      top: 0;
+    }
+
+    &--photography {
+      bottom: 0;
+    }
+
     img {
       @include size(100%);
       object-fit: cover;
+      animation: breathing 5s ease-out infinite normal;
     }
 
     &::before {
