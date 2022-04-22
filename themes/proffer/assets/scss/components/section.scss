@@ -14,8 +14,12 @@
   }
 
   &__grid {
+    // 170px at 1440px to 85px at 880px
+    --section-grid-padding: clamp(5.31rem, calc(-3.04rem + 15.18vw), 10.63rem);
+    position: relative;
     display: flex;
     justify-content: space-between;
+    padding-right: var(--section-grid-padding);
   }
 
   &__list {
@@ -86,6 +90,7 @@
     img {
       @include size(100%);
       object-fit: cover;
+      animation: breathing 5s ease-out infinite normal;
     }
 
     &::before {

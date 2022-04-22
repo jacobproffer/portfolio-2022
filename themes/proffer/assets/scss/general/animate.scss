@@ -51,6 +51,25 @@
   }
 }
 
+
+@keyframes breathing {
+  0% {
+    transform: scale(.97);
+  }
+
+  25% {
+    transform: scale(1);
+  }
+
+  60% {
+    transform: scale(.97);
+  }
+
+  100% {
+    transform: scale(.97);
+  }
+}
+
 .fade-in {
   @media (prefers-reduced-motion: no-preference) {
     animation-name: fade-in;
