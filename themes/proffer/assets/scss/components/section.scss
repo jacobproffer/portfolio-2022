@@ -70,13 +70,18 @@
 
 
   &__background-image {
-    // 650px at 1440px to 325px at 880px
-    --background-image-position: clamp(20.31rem, calc(-11.61rem + 58.04vw), 40.63rem);
     position: absolute;
-    top: 0;
     left: 0;
     z-index: -2;
     pointer-events: none;
+
+    &--projects {
+      top: 0;
+    }
+
+    &--photography {
+      bottom: 0;
+    }
 
     img {
       @include size(100%);
