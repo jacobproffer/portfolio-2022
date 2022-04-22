@@ -27,6 +27,10 @@
     --intro-list-spacing: clamp(8.88rem, calc(-5.17rem + 25.54vw), 17.81rem);
     display: grid;
     margin-top: var(--intro-list-spacing);
+
+    &--margin-bottom {
+      margin-bottom: var(--intro-list-spacing);
+    }
   }
 
   &__list-link {
