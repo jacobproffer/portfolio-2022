@@ -21,6 +21,14 @@
   @include screen-below($laptopSm) {
     --container: 810px;
   }
+
+  @include screen-below($tablet) {
+    --container: 608px;
+  }
+
+  @include screen-below($mobile) {
+    --container: 100%;
+  }
 }
 
 *,

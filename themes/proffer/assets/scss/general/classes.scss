@@ -59,6 +59,10 @@
     border-style: solid;
     border-color: #b9b9b9;
     filter: drop-shadow(8px 10px 8px #000);
+
+    @include screen-below($mobile) {
+      display: none;
+    }
   }
 
   &::before {
@@ -81,14 +85,6 @@
   line-height: 1.25;
 }
 
-.justify-end {
-  // 170px at 1440px to 85px at 880px
-  --inner-grid-gap: clamp(5.31rem, calc(-3.04rem + 15.18vw), 10.63rem);
-  display: flex;
-  justify-content: end;
-  gap: var(--inner-grid-gap);
-}
-
 .circle {
   @include size(10px);
   position: absolute;
@@ -96,6 +92,10 @@
   right: 0;
   background-color: var(--white);
   border-radius: 50%;
+
+  @include screen-below($tablet) {
+    display: none;
+  }
 }
 
 .name-graphic {
