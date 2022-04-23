@@ -51,6 +51,10 @@
       display: inline-block;
       margin-left: var(--list-slash-spacing);
       content: "/";
+
+      @include screen-below($tablet) {
+        display: none;
+      }
     }
 
     @include hover {
@@ -62,27 +66,18 @@
     // 186px at 1440px to 47px at 375px
     --image-list-gap: clamp(2.94rem, calc(-0.12rem + 13.05vw), 11.63rem);
     row-gap: var(--image-list-gap);
+    width: 100%;
     margin-top: var(--image-list-spacing);
   }
 
   &__image {
-    // 670px at 1440px to 502px at 880px
-    --section-image-width: clamp(31.38rem, calc(14.88rem + 30.00vw), 41.88rem);
-    // 447px at 1440px to 335px at 880px
-    --section-image-height: clamp(20.94rem, calc(9.94rem + 20.00vw), 27.94rem);
+    @include ratio(670, 440);
     position: relative;
-    width: var(--section-image-width);
-    height: var(--section-image-height);
-    overflow: hidden;
 
     img {
       @include size(100%);
-      position: absolute;
-      top: 50%;
-      left: 50%;
       object-fit: cover;
       filter: saturate(0);
-      transform: translate(-50%, -50%);
     }
   }
 

@@ -79,7 +79,7 @@
 }
 
 .size-48 {
-  --size-48-font-size: clamp(1.50rem, calc(-0.86rem + 4.29vw), 3.00rem);
+  --size-48-font-size: clamp(1.00rem, calc(0.30rem + 3.00vw), 3.00rem);
   font-size: var(--size-48-font-size);
   text-transform: uppercase;
   line-height: 1.25;
@@ -121,6 +121,7 @@
   }
 
   &--footer {
-    bottom: -20px;
+    --name-footer-spacing: clamp(0.31rem, calc(-0.02rem + 1.41vw), 1.25rem);
+    bottom: calc(var(--name-footer-spacing) * -1);
   }
 }
