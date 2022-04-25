@@ -1,6 +1,6 @@
 .section {
-  // 320px at 1440px to 160px at 880px
-  --intro-padding: clamp(10.00rem, calc(-5.71rem + 28.57vw), 20.00rem);
+  // 320px at 1440px to 80px at 375px
+  --intro-padding: clamp(5.00rem, calc(-0.28rem + 22.54vw), 20.00rem);
   position: relative;
   padding-bottom: calc(var(--intro-padding) - 10px);
 
@@ -14,17 +14,25 @@
   }
 
   &__grid {
-    // 170px at 1440px to 85px at 880px
-    --section-grid-padding: clamp(5.31rem, calc(-3.04rem + 15.18vw), 10.63rem);
+    // 170px at 1440px to 85px at 1080px
+    --section-grid-padding: clamp(5.31rem, calc(-10.62rem + 23.61vw), 10.63rem);
     position: relative;
     display: flex;
     justify-content: space-between;
     padding-right: var(--section-grid-padding);
+
+    @include screen-below($tablet) {
+      padding-right: 0;
+    }
+
+    @include screen-below($mobile) {
+      flex-direction: column;
+    }
   }
 
   &__list {
-    // 285px at 1440px to 142px to 880px
-    --intro-list-spacing: clamp(8.88rem, calc(-5.17rem + 25.54vw), 17.81rem);
+    // 285px at 1440px to 72px to 375px
+    --intro-list-spacing: clamp(4.50rem, calc(-0.19rem + 20.00vw), 17.81rem);
     display: grid;
     margin-top: var(--intro-list-spacing);
 
@@ -38,9 +46,15 @@
     text-decoration: none;
 
     &::after {
+      // 40px at 1440px to 10px at 375px
+      --list-slash-spacing: clamp(0.63rem, calc(-0.04rem + 2.82vw), 2.50rem);
       display: inline-block;
-      margin-left: 40px;
+      margin-left: var(--list-slash-spacing);
       content: "/";
+
+      @include screen-below($tablet) {
+        display: none;
+      }
     }
 
     @include hover {
@@ -49,30 +63,21 @@
   }
 
   &__image-list {
-    // 186px at 1440px to 94px at 880px
-    --image-list-gap: clamp(5.88rem, calc(-3.16rem + 16.43vw), 11.63rem);
+    // 186px at 1440px to 47px at 375px
+    --image-list-gap: clamp(2.94rem, calc(-0.12rem + 13.05vw), 11.63rem);
     row-gap: var(--image-list-gap);
+    width: 100%;
     margin-top: var(--image-list-spacing);
   }
 
   &__image {
-    // 670px at 1440px to 502px at 880px
-    --section-image-width: clamp(31.38rem, calc(14.88rem + 30.00vw), 41.88rem);
-    // 447px at 1440px to 335px at 880px
-    --section-image-height: clamp(20.94rem, calc(9.94rem + 20.00vw), 27.94rem);
+    @include ratio(670, 440);
     position: relative;
-    width: var(--section-image-width);
-    height: var(--section-image-height);
-    overflow: hidden;
 
     img {
       @include size(100%);
-      position: absolute;
-      top: 50%;
-      left: 50%;
       object-fit: cover;
       filter: saturate(0);
-      transform: translate(-50%, -50%);
     }
   }
 
