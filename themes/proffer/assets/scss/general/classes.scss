@@ -116,12 +116,17 @@
   }
 
   &--section {
-    top: var(--image-list-spacing);
+    top: 50%;
     z-index: -1;
+    transform: translateY(-50%);
   }
 
   &--footer {
     --name-footer-spacing: clamp(0.31rem, calc(-0.02rem + 1.41vw), 1.25rem);
     bottom: calc(var(--name-footer-spacing) * -1);
   }
+}
+
+.gutter {
+  padding: 0 var(--container-gutter);
 }

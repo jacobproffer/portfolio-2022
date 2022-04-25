@@ -4,8 +4,8 @@
 
   --hero-background: clamp(4.63rem, calc(-2.45rem + 12.86vw), 9.13rem);
 
-  // 284px at 1440px to 142px at 880px
-  --image-list-spacing: clamp(8.88rem, calc(-5.07rem + 25.36vw), 17.75rem);
+  // 284px at 1440px to 72px at 375px
+  --image-list-spacing: clamp(4.50rem, calc(-0.17rem + 19.91vw), 17.75rem);
 
   --white: #fff;
   --black: #000;
