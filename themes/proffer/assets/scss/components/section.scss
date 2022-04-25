@@ -27,6 +27,7 @@
 
     @include screen-below($mobile) {
       flex-direction: column;
+      gap: 20px;
     }
   }
 
@@ -34,6 +35,7 @@
     // 285px at 1440px to 72px to 375px
     --intro-list-spacing: clamp(4.50rem, calc(-0.19rem + 20.00vw), 17.81rem);
     display: grid;
+    row-gap: 20px;
     margin-top: var(--intro-list-spacing);
 
     &--margin-bottom {
@@ -99,7 +101,6 @@
     img {
       @include size(100%);
       object-fit: cover;
-      animation: breathing 5s ease-out infinite normal;
     }
 
     &::before {
