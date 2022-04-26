@@ -5,3 +5,4 @@ theme = "proffer"
 
 [params]
   description = "Senior Front-End Developer at Elegant Seagulls."
+  images = ["/images/social.jpg"]
