@@ -66,15 +66,17 @@
   }
 
   &::before {
-    top: -500px;
-    right: -500px;
-    bottom: -500px;
-    left: -500px;
+    position: fixed;
+    top: -110%;
+    left: -50%;
     z-index: 3;
+    width: 300%;
+    height: 300%;
     background-image: url("/images/noise.png");
-    background-size: 320px 320px;
     opacity: .35;
-    animation: grain 1.5s steps(6) infinite;
+    animation: grain 8s steps(10) infinite;
+    transform: translateX(50%);
+    opacity: .3;
   }
 }
 

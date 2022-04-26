@@ -16,38 +16,46 @@
 }
 
 @keyframes grain {
-  0% {
-    transform: translateX(0px,0px);
-  }
-  10% {
-    transform: translate(-100px, 100px);
-  }
-  20% {
-    transform: translate(150px, -100px);
-  }
-  30% {
-    transform: translate(-100px,100px);
-  }
-  40% {
-    transform: translate(100px, -150px);
-  }
-  50% {
-    transform: translate(-100px, 200px);
-  }
-  60% {
-    transform: translate(-200px, -100px);
-  }
-  70% {
-    transform: translateY(50px, 100px);
-  }
-  80% {
-    transform: translate(100px, -150px);
-  }
-  90% {
-    transform: translate(0px, 200px);
-  }
+
+  0%,
   100% {
-    transform: translate(-100px, 100px);
+    transform: translate(0, 0);
+  }
+
+  10% {
+    transform: translate(-5%, -10%);
+  }
+
+  20% {
+    transform: translate(-15%, 5%);
+  }
+
+  30% {
+    transform: translate(7%, -25%);
+  }
+
+  40% {
+    transform: translate(-5%, 25%);
+  }
+
+  50% {
+    transform: translate(-15%, 10%);
+  }
+
+  60% {
+    transform: translate(15%, 0%);
+  }
+
+  70% {
+    transform: translate(0%, 15%);
+  }
+
+  80% {
+    transform: translate(3%, 35%);
+  }
+
+  90% {
+    transform: translate(-10%, 10%);
   }
 }
 
