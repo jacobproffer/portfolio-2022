@@ -64,3 +64,11 @@
     animation-name: fade-in;
   }
 }
+
+.grain {
+  @media (prefers-reduced-motion: no-preference) {
+    &::before {
+      animation: grain 8s steps(10) infinite;
+    }
+  }
+}
