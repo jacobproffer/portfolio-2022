@@ -7,7 +7,8 @@
   text-align: center;
 
   &::before {
-    --bar-sizes: clamp(2.50rem, calc(-1.43rem + 7.14vw), 5.00rem);
+    // 80px at 1440px to 20px at 375px
+    --bar-sizes: clamp(1.25rem, calc(-0.07rem + 5.63vw), 5.00rem);
     position: absolute;
     top: 0;
     right: 8.5%;
