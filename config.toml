@@ -1,4 +1,4 @@
-baseURL = "https://proffer-dev.netlify.app/"
+baseURL = "https://proffer.dev/"
 languageCode = "en-us"
 title = "Jacob Proffer"
 theme = "proffer"
