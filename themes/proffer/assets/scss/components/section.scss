@@ -65,22 +65,28 @@
   }
 
   &__image-list {
-    // 186px at 1440px to 47px at 375px
-    --image-list-gap: clamp(2.94rem, calc(-0.12rem + 13.05vw), 11.63rem);
-    row-gap: var(--image-list-gap);
     width: 100%;
     margin-top: var(--image-list-spacing);
   }
 
   &__image {
+    // 186px at 1440px to 47px at 375px
+    --image-list-gap: clamp(2.94rem, calc(-0.12rem + 13.05vw), 11.63rem);
+    @include ratio(768, 508);
     position: relative;
     max-width: 768px;
+
+    &:not(:last-of-type) {
+      margin-bottom: var(--image-list-gap);
+    }
 
     @include screen-above($tablet) {
       margin-left: auto;
     }
 
     img {
+      @include size(100%);
+      object-fit: cover;
       filter: saturate(0);
     }
   }
@@ -88,9 +94,10 @@
 
   &__background-image {
     position: absolute;
-    left: 0;
+    left: 50%;
     z-index: -2;
     pointer-events: none;
+    transform: translateX(-50%);
 
     &--projects {
       top: 0;
