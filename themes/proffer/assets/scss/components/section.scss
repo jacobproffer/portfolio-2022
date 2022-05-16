@@ -73,12 +73,14 @@
   }
 
   &__image {
-    @include ratio(670, 440);
     position: relative;
+    max-width: 670px;
+
+    @include screen-above($tablet) {
+      margin-left: auto;
+    }
 
     img {
-      @include size(100%);
-      object-fit: cover;
       filter: saturate(0);
     }
   }
@@ -94,7 +96,7 @@
       top: 0;
     }
 
-    &--photography {
+    &--footer {
       bottom: 0;
     }
 
