@@ -9,33 +9,48 @@
       </div>
       <div class="circle"></div>
     </div>
+
     <div class="section__grid">
-      <ul class="unstyled-list grid section__image-list">
-        <li class="section__image gsap-fade-in">
-          <div class="content">
-            <img src="/images/run.jpg" alt="A person running." loading="lazy">
-          </div>
-        </li>
-        <li class="section__image gsap-fade-in">
-          <div class="content">
-            <img src="/images/blue-loop.jpg" alt="Mount Marquette Blue Loop trail." loading="lazy">
-          </div>
-        </li>
-        <li class="section__image gsap-fade-in">
-          <div class="content">
-            <img src="/images/carp.jpg" alt="Carp River trail." loading="lazy">
-          </div>
-        </li>
-        <li class="section__image gsap-fade-in">
-          <div class="content">
-            <img src="/images/radio-tower-1.jpg" alt="Landscape view of the south Noque trails." loading="lazy">
-          </div>
-        </li>
-        <li class="section__image gsap-fade-in">
-          <div class="content">
-            <img src="/images/radio-tower-2.jpg" alt="Obstructed view of Marquette Mountain." loading="lazy">
-          </div>
-        </li>
+      <ul class="unstyled-list section__image-list">
+
+        {{ range $.Site.Data.photos }}
+
+          {{ $src := resources.Get .source }}
+          {{ $smallw := default "370x webp" }}
+          {{ $mediumw := default "608x webp" }}
+          {{ $largew := default "768x webp" }}
+
+          {{ $data := newScratch }}
+          {{ $data.Set "small" ($src.Resize $smallw) }}
+          {{ $data.Set "medium" ($src.Resize $mediumw) }}
+          {{ $data.Set "large" ($src.Resize $largew) }}
+
+          {{ $small := $data.Get "small" }}
+          {{ $medium := $data.Get "medium" }}
+          {{ $large := $data.Get "large" }}
+
+          <li class="section__image gsap-fade-in">
+            <div class="content">
+
+              <picture>
+                <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+
+                <source media="(max-width: 768px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+
+                <source media="(min-width: 1080px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
+
+                <img
+                  src="{{ $src.RelPermalink }}"
+                  width="{{ $src.Width }}"
+                  height="{{ $src.Height }}"
+                  alt="{{ .alt }}"
+                >
+              </picture>
+
+            </div>
+          </li>
+        {{ end }}
+
       </ul>
     </div>
   </div>

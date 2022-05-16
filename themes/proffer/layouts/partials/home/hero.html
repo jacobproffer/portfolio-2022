@@ -4,25 +4,79 @@
   </div>
   <div class="hero__background-wrap">
     <div class="hero__background">
+
+      {{ $src := resources.Get "/images/eye.jpg" }}
+      {{ $tinyw := default "577x webp" }}
+      {{ $smallw := default "770x webp" }}
+
+      {{ $data := newScratch }}
+      {{ $data.Set "tiny" ($src.Resize $tinyw) }}
+      {{ $data.Set "small" ($src.Resize $smallw) }}
+
+      {{ $tiny := $data.Get "tiny" }}
+      {{ $small := $data.Get "small" }}
+
       <div class="hero__image">
         <div class="content">
-          <img src="/images/eye.jpg" alt="">
+
+          <picture>
+            <source media="(max-width: 577px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+
+            <source media="(min-width: 770px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+
+            <img
+              src="{{ $src.RelPermalink }}"
+              width="{{ $src.Width }}"
+              height="{{ $src.Height }}"
+              alt=""
+            >
+          </picture>
+
         </div>
       </div>
+
       <div class="hero__image">
         <div class="content">
-          <img src="/images/eye.jpg" alt="">
+
+          <picture>
+            <source media="(max-width: 577px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+
+            <source media="(min-width: 770px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+
+            <img
+              src="{{ $src.RelPermalink }}"
+              width="{{ $src.Width }}"
+              height="{{ $src.Height }}"
+              alt=""
+            >
+          </picture>
+
         </div>
       </div>
+
       <div class="hero__image">
         <div class="content">
-          <img src="/images/eye.jpg" alt="">
+
+          <picture>
+            <source media="(max-width: 577px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+
+            <source media="(min-width: 770px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+
+            <img
+              src="{{ $src.RelPermalink }}"
+              width="{{ $src.Width }}"
+              height="{{ $src.Height }}"
+              alt=""
+            >
+          </picture>
+
         </div>
       </div>
+
     </div>
     <p class="hero__copy size-48 gsap-fade-in">I am a web developer from Michigan / Senior Front-End Developer at <a href="https://www.elegantseagulls.com/" target="_blank">Elegant Seagulls</a> / Accessibility / Love Kombucha / Learning Japanese / Traveling / Trail Running</p>
     <div class="name-graphic name-graphic--hero">
       <img src="/images/jacob-proffer.svg" alt="" />
     </div>
-  </div class="hero__background-wrap">
+  </div>
 </section>
