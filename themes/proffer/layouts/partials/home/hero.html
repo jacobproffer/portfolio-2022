@@ -6,23 +6,28 @@
     <div class="hero__background">
 
       {{ $src := resources.Get "/images/eye.jpg" }}
-      {{ $tinyw := default "577x webp" }}
-      {{ $smallw := default "770x webp" }}
+      {{ $smallw := default "385x webp" }}
+      {{ $mediumw := default "577x webp" }}
+      {{ $largew := default "770x webp" }}
 
       {{ $data := newScratch }}
-      {{ $data.Set "tiny" ($src.Resize $tinyw) }}
       {{ $data.Set "small" ($src.Resize $smallw) }}
+      {{ $data.Set "medium" ($src.Resize $mediumw) }}
+      {{ $data.Set "large" ($src.Resize $largew) }}
 
-      {{ $tiny := $data.Get "tiny" }}
       {{ $small := $data.Get "small" }}
+      {{ $medium := $data.Get "medium" }}
+      {{ $large := $data.Get "large" }}
 
       <div class="hero__image">
         <div class="content">
 
           <picture>
-            <source media="(max-width: 577px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+            <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
 
-            <source media="(min-width: 770px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+            <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+
+            <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
             <img
               src="{{ $src.RelPermalink }}"
@@ -39,9 +44,11 @@
         <div class="content">
 
           <picture>
-            <source media="(max-width: 577px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+            <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
 
-            <source media="(min-width: 770px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+            <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+
+            <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
             <img
               src="{{ $src.RelPermalink }}"
@@ -58,9 +65,11 @@
         <div class="content">
 
           <picture>
-            <source media="(max-width: 577px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
+            <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
 
-            <source media="(min-width: 770px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+            <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+
+            <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
             <img
               src="{{ $src.RelPermalink }}"
