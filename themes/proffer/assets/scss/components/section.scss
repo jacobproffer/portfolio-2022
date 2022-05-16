@@ -9,8 +9,11 @@
   }
 
   p {
-    max-width: 36ch;
     margin: 0;
+
+    @include screen-above($mobile) {
+      max-width: 36ch;
+    }
   }
 
   &__grid {
@@ -96,6 +99,8 @@
     position: absolute;
     left: 50%;
     z-index: -2;
+    max-width: 1806px;
+    width: 100%;
     pointer-events: none;
     transform: translateX(-50%);
 
