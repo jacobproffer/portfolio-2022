@@ -19,68 +19,60 @@
       {{ $medium := $data.Get "medium" }}
       {{ $large := $data.Get "large" }}
 
-      <div class="hero__image">
-        <div class="content">
+      {{ range seq 3 }}
 
-          <picture>
-            <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+        <div class="hero__image">
+          <div class="content">
 
-            <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+            <picture>
+              <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
 
-            <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
+              <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
 
-            <img
-              src="{{ $src.RelPermalink }}"
-              width="{{ $src.Width }}"
-              height="{{ $src.Height }}"
-              alt=""
-            >
-          </picture>
+              <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
-        </div>
-      </div>
+              <img
+                src="{{ $src.RelPermalink }}"
+                width="{{ $src.Width }}"
+                height="{{ $src.Height }}"
+                alt=""
+              >
+            </picture>
 
-      <div class="hero__image">
-        <div class="content">
+            {{ $src := resources.Get "/images/texture.jpg" }}
+            {{ $smallw := default "385x webp" }}
+            {{ $mediumw := default "577x webp" }}
+            {{ $largew := default "770x webp" }}
 
-          <picture>
-            <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+            {{ $data := newScratch }}
+            {{ $data.Set "small" ($src.Resize $smallw) }}
+            {{ $data.Set "medium" ($src.Resize $mediumw) }}
+            {{ $data.Set "large" ($src.Resize $largew) }}
 
-            <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+            {{ $small := $data.Get "small" }}
+            {{ $medium := $data.Get "medium" }}
+            {{ $large := $data.Get "large" }}
 
-            <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
+            <picture>
+              <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
 
-            <img
-              src="{{ $src.RelPermalink }}"
-              width="{{ $src.Width }}"
-              height="{{ $src.Height }}"
-              alt=""
-            >
-          </picture>
+              <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
 
-        </div>
-      </div>
+              <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
-      <div class="hero__image">
-        <div class="content">
+              <img
+                src="{{ $src.RelPermalink }}"
+                width="{{ $src.Width }}"
+                height="{{ $src.Height }}"
+                alt=""
+              >
+            </picture>
 
-          <picture>
-            <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
-
-            <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
-
-            <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
-
-            <img
-              src="{{ $src.RelPermalink }}"
-              width="{{ $src.Width }}"
-              height="{{ $src.Height }}"
-              alt=""
-            >
-          </picture>
+          </div>
 
         </div>
-      </div>
+
+      {{ end }}
 
     </div>
     <p class="hero__copy size-48 gsap-fade-in">I am a web developer from Michigan / Senior Front-End Developer at <a href="https://www.elegantseagulls.com/" target="_blank">Elegant Seagulls</a> / Accessibility / Love Kombucha / Learning Japanese / Traveling / Trail Running</p>
