@@ -39,31 +39,31 @@
               >
             </picture>
 
-            {{ $src := resources.Get "/images/texture.jpg" }}
+            {{ $textureSrc := resources.Get "/images/texture.jpg" }}
             {{ $smallw := default "385x webp" }}
             {{ $mediumw := default "577x webp" }}
             {{ $largew := default "770x webp" }}
 
             {{ $data := newScratch }}
-            {{ $data.Set "small" ($src.Resize $smallw) }}
-            {{ $data.Set "medium" ($src.Resize $mediumw) }}
-            {{ $data.Set "large" ($src.Resize $largew) }}
+            {{ $data.Set "small" ($textureSrc.Resize $smallw) }}
+            {{ $data.Set "medium" ($textureSrc.Resize $mediumw) }}
+            {{ $data.Set "large" ($textureSrc.Resize $largew) }}
 
-            {{ $small := $data.Get "small" }}
-            {{ $medium := $data.Get "medium" }}
-            {{ $large := $data.Get "large" }}
+            {{ $textureSmall := $data.Get "small" }}
+            {{ $textureMedium := $data.Get "medium" }}
+            {{ $textureLarge := $data.Get "large" }}
 
             <picture>
-              <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+              <source media="(max-width: 480px)" srcset="{{with $textureSmall.RelPermalink }}{{.}}{{ end }}">
 
-              <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+              <source media="(max-width: 577px)" srcset="{{with $textureMedium.RelPermalink }}{{.}}{{ end }}">
 
-              <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
+              <source media="(min-width: 770px)" srcset="{{with $textureLarge.RelPermalink }}{{.}}{{ end }}">
 
               <img
-                src="{{ $src.RelPermalink }}"
-                width="{{ $src.Width }}"
-                height="{{ $src.Height }}"
+                src="{{ $textureSrc.RelPermalink }}"
+                width="{{ $textureSrc.Width }}"
+                height="{{ $textureSrc.Height }}"
                 alt=""
               >
             </picture>
