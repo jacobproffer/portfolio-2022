@@ -9,6 +9,7 @@
 
   --white: #fff;
   --black: #000;
+  --border: #b9b9b9;
 
   @include screen-below($desktopSm) {
     --container: 1280px;

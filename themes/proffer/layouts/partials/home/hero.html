@@ -1,6 +1,6 @@
 <section class="hero">
   <div class="container">
-    <H1>My name is Jacob Proffer</H1>
+    <h1>My name is Jacob Proffer</h1>
   </div>
   <div class="hero__background-wrap">
     <div class="hero__background">
@@ -61,6 +61,7 @@
               <source media="(min-width: 770px)" srcset="{{with $textureLarge.RelPermalink }}{{.}}{{ end }}">
 
               <img
+                class="hero__texture"
                 src="{{ $textureSrc.RelPermalink }}"
                 width="{{ $textureSrc.Width }}"
                 height="{{ $textureSrc.Height }}"
