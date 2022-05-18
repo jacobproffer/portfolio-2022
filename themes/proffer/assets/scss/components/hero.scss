@@ -3,7 +3,6 @@
   --hero-top-padding: clamp(2.13rem, calc(-0.10rem + 9.48vw), 8.44rem);
   position: relative;
   padding-top: var(--hero-top-padding);
-  overflow: hidden;
   text-align: center;
 
   &::before {
@@ -49,25 +48,19 @@
     }
 
     img {
-      @include size(100%);
-      object-fit: cover;
       mix-blend-mode: soft-light;
     }
   }
 
   &__texture {
-    @include size(100%);
-    position: absolute;
     top: 0;
     left: 0;
     z-index: -1;
-    object-fit: cover;
     mix-blend-mode: difference;
     pointer-events: none;
   }
 
   &__copy {
-    position: absolute;
     bottom: 36px;
     left: 50%;
     z-index: 3;

@@ -15,7 +15,7 @@
 {{ $medium := $data.Get "medium" }}
 {{ $large := $data.Get "large" }}
 
-<div class="section__background-image section__background-image--projects">
+<div class="section__background-image absolute section__background-image--projects">
 
   <picture>
     <source media="(max-width: 768px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
@@ -27,6 +27,7 @@
     <source media="(min-width: 1440px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
     <img
+      class="image-cover"
       src="{{ $src.RelPermalink }}"
       width="{{ $src.Width }}"
       height="{{ $src.Height }}"
