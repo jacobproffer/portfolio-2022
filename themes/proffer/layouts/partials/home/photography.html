@@ -7,7 +7,7 @@
       <div>
         <p>From the climbing up and down the Mount Marquette loop to dashing down Benson, I love to run the Noque trails in my free time. Technical trails can be a solace in times of discomfort or anger. The rocks and roots deserve attention, thereby pushing negativity aside for the duration of the run.</p>
       </div>
-      <div class="circle"></div>
+      <div class="circle absolute"></div>
     </div>
 
     <div class="section__grid">
@@ -43,6 +43,7 @@
                   <source media="(min-width: 1080px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
                   <img
+                    class="image-cover"
                     src="{{ $src.RelPermalink }}"
                     width="{{ $src.Width }}"
                     height="{{ $src.Height }}"
@@ -63,8 +64,9 @@
     </div>
 
   </div>
-  <div class="name-graphic name-graphic--section">
+  <div class="name-graphic absolute name-graphic--section">
     <img
+      class="image-cover"
       src="/images/jacob-proffer-2.svg"
       alt=""
       loading="lazy"
