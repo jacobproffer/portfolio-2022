@@ -122,7 +122,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+      background: linear-gradient(360deg, var(--black) 0%, rgba(0, 0, 0, 0) 100%);
       content: "";
     }
   }

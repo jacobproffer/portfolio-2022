@@ -11,50 +11,57 @@
     </div>
 
     <div class="section__grid">
-      <ul class="unstyled-list section__image-list">
 
-        {{ range $.Site.Data.photos }}
+      {{ if .Site.Data.photos }}
 
-          {{ $src := resources.Get .source }}
-          {{ $smallw := default "370x webp" }}
-          {{ $mediumw := default "608x webp" }}
-          {{ $largew := default "768x webp" }}
+        <ul class="unstyled-list section__image-list">
 
-          {{ $data := newScratch }}
-          {{ $data.Set "small" ($src.Resize $smallw) }}
-          {{ $data.Set "medium" ($src.Resize $mediumw) }}
-          {{ $data.Set "large" ($src.Resize $largew) }}
+          {{ range .Site.Data.photos }}
 
-          {{ $small := $data.Get "small" }}
-          {{ $medium := $data.Get "medium" }}
-          {{ $large := $data.Get "large" }}
+            {{ $src := resources.Get .source }}
+            {{ $smallw := default "370x webp" }}
+            {{ $mediumw := default "608x webp" }}
+            {{ $largew := default "768x webp" }}
 
-          <li class="section__image gsap-fade-in">
-            <div class="content">
+            {{ $data := newScratch }}
+            {{ $data.Set "small" ($src.Resize $smallw) }}
+            {{ $data.Set "medium" ($src.Resize $mediumw) }}
+            {{ $data.Set "large" ($src.Resize $largew) }}
 
-              <picture>
-                <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+            {{ $small := $data.Get "small" }}
+            {{ $medium := $data.Get "medium" }}
+            {{ $large := $data.Get "large" }}
 
-                <source media="(max-width: 768px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
+            <li class="section__image gsap-fade-in">
+              <div class="content">
 
-                <source media="(min-width: 1080px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
+                <picture>
+                  <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
 
-                <img
-                  src="{{ $src.RelPermalink }}"
-                  width="{{ $src.Width }}"
-                  height="{{ $src.Height }}"
-                  alt="{{ .alt }}"
-                  loading="lazy"
-                  decoding="async"
-                >
-              </picture>
+                  <source media="(max-width: 768px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
 
-            </div>
-          </li>
-        {{ end }}
+                  <source media="(min-width: 1080px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
 
-      </ul>
+                  <img
+                    src="{{ $src.RelPermalink }}"
+                    width="{{ $src.Width }}"
+                    height="{{ $src.Height }}"
+                    alt="{{ .alt }}"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </picture>
+
+              </div>
+            </li>
+          {{ end }}
+
+        </ul>
+
+      {{ end }}
+
     </div>
+
   </div>
   <div class="name-graphic name-graphic--section">
     <img

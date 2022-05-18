@@ -1,7 +1,7 @@
 name = "Jacob Proffer"
-description = ""
-homepage = ""
-tags = ["military", "dark"]
+description = "Personal site of Jacob Proffer"
+homepage = "https://github.com/jacobproffer/portfolio-2022"
+tags = ["typography", "brutalist", "monochrome"]
 features = ["sass", "js", "minification"]
 min_version = "0.94.0"
 

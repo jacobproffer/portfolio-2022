@@ -9,14 +9,29 @@
       </div>
       <div class="circle"></div>
     </div>
-    <ul class="section__list section__list--margin-bottom unstyled-list">
-      <li>
-        <a class="section__list-link size-48 gsap-fade-in" href="https://github.com/jacobproffer/" target="_blank">github.com/jacobproffer</a>
-      </li>
-      <li>
-        <a class="section__list-link size-48 gsap-fade-in" href="https://dribbble.com/jacobproffer/" target="_blank">dribbble.com/jacobproffer</a>
-      </li>
-    </ul>
+
+    {{ if .Site.Menus.social }}
+
+      <ul class="section__list section__list--margin-bottom unstyled-list">
+
+        {{ range .Site.Menus.social }}
+
+          <li>
+            <a
+              class="section__list-link size-48 gsap-fade-in"
+              href="{{ .URL }}"
+              target="_blank"
+            >
+              {{ .Name }}
+            </a>
+          </li>
+
+        {{ end }}
+
+      </ul>
+
+    {{ end }}
+
   </div>
   <div class="name-graphic name-graphic--footer">
     <img
