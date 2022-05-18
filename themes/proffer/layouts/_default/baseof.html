@@ -67,7 +67,16 @@
   </head>
 
   <body class="animated fade-in">
-    {{ block "main" . }}{{ end }}
-    {{ partial "scripts" . }}
+
+    <div class="wrap grain">
+
+      {{ block "main" . }}{{ end }}
+
+      {{ partial "footer" . }}
+
+      {{ partial "scripts" . }}
+
+    </div>
+
   </body>
 </html>

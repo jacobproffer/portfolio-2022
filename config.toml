@@ -6,3 +6,13 @@ theme = "proffer"
 [params]
   description = "Senior Front-End Developer at Elegant Seagulls."
   images = ["/images/social.jpg"]
+
+[menu]
+
+  [[menu.social]]
+    name = "github.com/jacobproffer"
+    url = "https://github.com/jacobproffer/"
+
+  [[menu.social]]
+    name = "dribbble.com/jacobproffer"
+    url = "https://dribbble.com/jacobproffer/"

@@ -6,20 +6,14 @@
 
 {{ define "main" }}
 
-<div class="wrap grain">
-
   <main id="content">
 
     {{ partial "home/hero" }}
 
-    {{ partial "home/projects" }}
+    {{ partial "home/projects" . }}
 
     {{ partial "home/photography" . }}
 
   </main>
-
-  {{ partial "footer" }}
-
-</div>
 
 {{ end }}
