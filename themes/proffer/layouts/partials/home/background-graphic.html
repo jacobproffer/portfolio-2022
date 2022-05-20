@@ -1,15 +1,18 @@
 {{ $src := resources.Get "/images/intro-background.jpg" }}
+{{ $phonew := default "375x webp" }}
 {{ $tinyw := default "450x webp" }}
 {{ $smallw := default "903x webp" }}
 {{ $mediumw := default "1354x webp" }}
 {{ $largew := default "1806x webp" }}
 
 {{ $data := newScratch }}
+{{ $data.Set "phone" ($src.Resize $phonew) }}
 {{ $data.Set "tiny" ($src.Resize $tinyw) }}
 {{ $data.Set "small" ($src.Resize $smallw) }}
 {{ $data.Set "medium" ($src.Resize $mediumw) }}
 {{ $data.Set "large" ($src.Resize $largew) }}
 
+{{ $phone := $data.Get "phone" }}
 {{ $tiny := $data.Get "tiny" }}
 {{ $small := $data.Get "small" }}
 {{ $medium := $data.Get "medium" }}
@@ -18,6 +21,8 @@
 <div class="section__background-image absolute section__background-image--{{ .backgroundClass }}">
 
   <picture>
+    <source media="(max-width: 375px)" srcset="{{with $phone.RelPermalink }}{{.}}{{ end }}">
+
     <source media="(max-width: 768px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
 
     <source media="(max-width: 1080px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">

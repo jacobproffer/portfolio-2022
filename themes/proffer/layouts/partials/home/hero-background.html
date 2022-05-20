@@ -1,7 +1,7 @@
 <div class="hero__background grid">
 
   {{ $src := resources.Get "/images/eye.jpg" }}
-  {{ $smallw := default "385x webp" }}
+  {{ $smallw := default "375x webp" }}
   {{ $mediumw := default "577x webp" }}
   {{ $largew := default "770x webp" }}
 
@@ -20,7 +20,7 @@
       <div class="content">
 
         <picture>
-          <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
+          <source media="(max-width: 375px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
 
           <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
 
@@ -36,7 +36,7 @@
         </picture>
 
         {{ $textureSrc := resources.Get "/images/texture.jpg" }}
-        {{ $smallw := default "385x webp" }}
+        {{ $smallw := default "375x webp" }}
         {{ $mediumw := default "577x webp" }}
         {{ $largew := default "770x webp" }}
 
@@ -50,7 +50,7 @@
         {{ $textureLarge := $data.Get "large" }}
 
         <picture>
-          <source media="(max-width: 480px)" srcset="{{with $textureSmall.RelPermalink }}{{.}}{{ end }}">
+          <source media="(max-width: 375px)" srcset="{{with $textureSmall.RelPermalink }}{{.}}{{ end }}">
 
           <source media="(max-width: 577px)" srcset="{{with $textureMedium.RelPermalink }}{{.}}{{ end }}">
 
