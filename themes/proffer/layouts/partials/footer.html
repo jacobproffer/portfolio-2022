@@ -5,7 +5,12 @@
         <h2>Social Links</h2>
       </div>
       <div>
-        <p>I'm not a fan of social media these days, so you'll rarely see me post anything on <a href="https://www.twitter.com/jacobproffer" target="_blank">Twitter</a>. Though I am considering re-starting my travel and language study <a href="https://www.jacobproffer.com/" target="_blank">blog</a>.</p>
+        <p>
+          I'm not a fan of social media these days, so you'll rarely see me post anything on
+          <a href="https://www.twitter.com/jacobproffer" target="_blank">Twitter</a>. Though I am
+          considering re-starting my travel and language study
+          <a href="https://www.jacobproffer.com/" target="_blank">blog</a>.
+        </p>
       </div>
       <div class="circle absolute"></div>
     </div>
@@ -16,15 +21,19 @@
 
         {{ range .Site.Menus.social }}
 
-          <li>
-            <a
-              class="section__list-link relative size-48 gsap-fade-in"
-              href="{{ .URL }}"
-              target="_blank"
-            >
-              {{ .Name }}
-            </a>
-          </li>
+          {{ if .URL }}
+
+            <li>
+              <a
+                class="section__list-link relative size-48 gsap-fade-in"
+                href="{{ .URL }}"
+                target="_blank"
+              >
+                {{ .Name }}
+              </a>
+            </li>
+
+          {{ end }}
 
         {{ end }}
 
@@ -41,6 +50,6 @@
     />
   </div>
 
-  {{ partial "home/footer-background" }}
+  {{ partial "home/background-graphic" (dict "backgroundClass" "footer") }}
 
 </footer>

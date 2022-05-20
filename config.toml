@@ -2,6 +2,7 @@ baseURL = "https://proffer.dev/"
 languageCode = "en-us"
 title = "Jacob Proffer"
 theme = "proffer"
+enableRobotsTXT = true
 
 [params]
   description = "Senior Front-End Developer at Elegant Seagulls."
