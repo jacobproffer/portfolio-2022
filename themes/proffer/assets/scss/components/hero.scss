@@ -1,7 +1,6 @@
 .hero {
   // 135px at 1440px to 34px at 375px
   --hero-top-padding: clamp(2.13rem, calc(-0.10rem + 9.48vw), 8.44rem);
-  position: relative;
   padding-top: var(--hero-top-padding);
   text-align: center;
 
@@ -23,13 +22,11 @@
   &__background-wrap {
     // 75px at 1440px to 19px at 375px
     --name-position: clamp(1.19rem, calc(-0.04rem + 5.26vw), 4.69rem);
-    position: relative;
   }
 
   &__background {
     // 148px at 1440px to 38px at 375px
     --background-margin: clamp(2.38rem, calc(-0.05rem + 10.33vw), 9.25rem);
-    display: grid;
     grid-template-columns: 1fr 2fr 1.5fr;
     margin-top: var(--background-margin);
 
@@ -40,7 +37,6 @@
 
   &__image {
     @include ratio(770, 900);
-    position: relative;
 
     &:first-of-type,
     &:last-of-type {

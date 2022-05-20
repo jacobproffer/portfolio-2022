@@ -36,8 +36,6 @@
 }
 
 .wrap {
-  position: relative;
-
   &::before,
   &::after {
     position: absolute;

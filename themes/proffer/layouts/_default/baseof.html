@@ -13,7 +13,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>
 
@@ -68,11 +67,15 @@
 
   <body class="animated fade-in">
 
-    <div class="wrap overflow-hidden grain">
+    <div class="wrap relative overflow-hidden grain">
 
-      {{ block "main" . }}{{ end }}
+      <main id="content">
 
-      {{ partial "footer" . }}
+        {{ block "main" . }}{{ end }}
+
+      </main>
+
+      {{ block "footer" . }}{{ end }}
 
       {{ partial "scripts" . }}
 

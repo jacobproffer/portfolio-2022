@@ -1,6 +1,6 @@
-<section class="section section--padding-top">
+<section class="section relative section--padding-top">
   <div class="container gsap-fade-in">
-    <div class="section__grid">
+    <div class="section__grid relative">
       <div>
         <h2>Personal Projects</h2>
       </div>
@@ -12,13 +12,13 @@
 
     {{ if .Site.Data.sites }}
 
-      <ul class="section__list unstyled-list">
+      <ul class="section__list grid unstyled-list">
 
         {{ range .Site.Data.sites }}
 
           <li>
             <a
-              class="section__list-link size-48 gsap-fade-in"
+              class="section__list-link relative size-48 gsap-fade-in"
               href="{{ .url }}"
               target="_blank"
             >
