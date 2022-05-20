@@ -15,7 +15,7 @@
 {{ $medium := $data.Get "medium" }}
 {{ $large := $data.Get "large" }}
 
-<div class="section__background-image absolute section__background-image--footer">
+<div class="section__background-image absolute section__background-image--{{ .backgroundClass }}">
 
   <picture>
     <source media="(max-width: 768px)" srcset="{{with $tiny.RelPermalink }}{{.}}{{ end }}">
@@ -32,8 +32,6 @@
       width="{{ $src.Width }}"
       height="{{ $src.Height }}"
       alt=""
-      loading="lazy"
-      decoding="async"
     >
   </picture>
 
