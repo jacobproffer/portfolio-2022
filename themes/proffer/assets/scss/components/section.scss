@@ -1,7 +1,6 @@
 .section {
   // 320px at 1440px to 80px at 375px
   --intro-padding: clamp(5.00rem, calc(-0.28rem + 22.54vw), 20.00rem);
-  position: relative;
   padding-bottom: calc(var(--intro-padding) - 10px);
 
   &--padding-top {
@@ -19,7 +18,6 @@
   &__grid {
     // 170px at 1440px to 85px at 1080px
     --section-grid-padding: clamp(5.31rem, calc(-10.62rem + 23.61vw), 10.63rem);
-    position: relative;
     display: flex;
     justify-content: space-between;
     padding-right: var(--section-grid-padding);
@@ -37,7 +35,6 @@
   &__list {
     // 285px at 1440px to 72px to 375px
     --intro-list-spacing: clamp(4.50rem, calc(-0.19rem + 20.00vw), 17.81rem);
-    display: grid;
     row-gap: 20px;
     margin-top: var(--intro-list-spacing);
 
@@ -47,7 +44,6 @@
   }
 
   &__list-link {
-    position: relative;
     text-decoration: none;
 
     &::after {
@@ -76,7 +72,6 @@
     // 186px at 1440px to 47px at 375px
     --image-list-gap: clamp(2.94rem, calc(-0.12rem + 13.05vw), 11.63rem);
     @include ratio(768, 508);
-    position: relative;
     max-width: 768px;
 
     &:not(:last-of-type) {

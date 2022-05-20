@@ -1,24 +1,24 @@
-<footer class="section">
+<footer class="section relative">
   <div class="container gsap-fade-in">
-    <div class="section__grid">
+    <div class="section__grid relative">
       <div>
         <h2>Social Links</h2>
       </div>
       <div>
-        <p>I'm not a fan of social media these days, so you'll rarely see me post anything on <a href="https://www.twitter.com/jacobproffer">Twitter</a>. Though I am considering re-starting my travel and language study <a href="https://www.jacobproffer.com/">blog</a>.</p>
+        <p>I'm not a fan of social media these days, so you'll rarely see me post anything on <a href="https://www.twitter.com/jacobproffer" target="_blank">Twitter</a>. Though I am considering re-starting my travel and language study <a href="https://www.jacobproffer.com/" target="_blank">blog</a>.</p>
       </div>
       <div class="circle absolute"></div>
     </div>
 
     {{ if .Site.Menus.social }}
 
-      <ul class="section__list section__list--margin-bottom unstyled-list">
+      <ul class="section__list grid section__list--margin-bottom unstyled-list">
 
         {{ range .Site.Menus.social }}
 
           <li>
             <a
-              class="section__list-link size-48 gsap-fade-in"
+              class="section__list-link relative size-48 gsap-fade-in"
               href="{{ .URL }}"
               target="_blank"
             >

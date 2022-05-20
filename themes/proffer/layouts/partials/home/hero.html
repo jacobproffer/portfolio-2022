@@ -1,82 +1,11 @@
-<section class="hero overflow-hidden">
+<section class="hero relative overflow-hidden">
   <div class="container">
     <h1>My name is Jacob Proffer</h1>
   </div>
-  <div class="hero__background-wrap">
-    <div class="hero__background">
+  <div class="hero__background-wrap relative">
 
-      {{ $src := resources.Get "/images/eye.jpg" }}
-      {{ $smallw := default "385x webp" }}
-      {{ $mediumw := default "577x webp" }}
-      {{ $largew := default "770x webp" }}
+    {{ partial "home/hero-background" }}
 
-      {{ $data := newScratch }}
-      {{ $data.Set "small" ($src.Resize $smallw) }}
-      {{ $data.Set "medium" ($src.Resize $mediumw) }}
-      {{ $data.Set "large" ($src.Resize $largew) }}
-
-      {{ $small := $data.Get "small" }}
-      {{ $medium := $data.Get "medium" }}
-      {{ $large := $data.Get "large" }}
-
-      {{ range seq 3 }}
-
-        <div class="hero__image">
-          <div class="content">
-
-            <picture>
-              <source media="(max-width: 480px)" srcset="{{with $small.RelPermalink }}{{.}}{{ end }}">
-
-              <source media="(max-width: 577px)" srcset="{{with $medium.RelPermalink }}{{.}}{{ end }}">
-
-              <source media="(min-width: 770px)" srcset="{{with $large.RelPermalink }}{{.}}{{ end }}">
-
-              <img
-                class="image-cover"
-                src="{{ $src.RelPermalink }}"
-                width="{{ $src.Width }}"
-                height="{{ $src.Height }}"
-                alt=""
-              >
-            </picture>
-
-            {{ $textureSrc := resources.Get "/images/texture.jpg" }}
-            {{ $smallw := default "385x webp" }}
-            {{ $mediumw := default "577x webp" }}
-            {{ $largew := default "770x webp" }}
-
-            {{ $data := newScratch }}
-            {{ $data.Set "small" ($textureSrc.Resize $smallw) }}
-            {{ $data.Set "medium" ($textureSrc.Resize $mediumw) }}
-            {{ $data.Set "large" ($textureSrc.Resize $largew) }}
-
-            {{ $textureSmall := $data.Get "small" }}
-            {{ $textureMedium := $data.Get "medium" }}
-            {{ $textureLarge := $data.Get "large" }}
-
-            <picture>
-              <source media="(max-width: 480px)" srcset="{{with $textureSmall.RelPermalink }}{{.}}{{ end }}">
-
-              <source media="(max-width: 577px)" srcset="{{with $textureMedium.RelPermalink }}{{.}}{{ end }}">
-
-              <source media="(min-width: 770px)" srcset="{{with $textureLarge.RelPermalink }}{{.}}{{ end }}">
-
-              <img
-                class="hero__texture absolute image-cover"
-                src="{{ $textureSrc.RelPermalink }}"
-                width="{{ $textureSrc.Width }}"
-                height="{{ $textureSrc.Height }}"
-                alt=""
-              >
-            </picture>
-
-          </div>
-
-        </div>
-
-      {{ end }}
-
-    </div>
     <p class="hero__copy absolute size-48 gsap-fade-in">
       I am a web developer from Michigan / Senior Front-End Developer at <a href="https://www.elegantseagulls.com/" target="_blank">Elegant Seagulls</a> / Accessibility / Love Kombucha / Learning Japanese / Traveling / Trail Running</p>
     <div class="name-graphic absolute name-graphic--hero">
