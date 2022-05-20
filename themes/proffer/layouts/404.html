@@ -6,26 +6,6 @@
 
 {{ define "main" }}
 
-  <section class="hero relative overflow-hidden">
-    <div class="container">
-      <h1>404 - Page Not Found</h1>
-    </div>
-    <div class="hero__background-wrap relative">
-
-      {{ partial "home/hero-background" }}
-
-      <p class="hero__copy absolute size-48 gsap-fade-in">
-        I'm afraid this page does not exist. If you feel like this
-        is an issue, please file an issue on the
-        <a href="https://github.com/jacobproffer/portfolio-2022" target="_blank">
-          GitHub Repository</a>.
-      </p>
-
-      <div class="name-graphic absolute name-graphic--hero">
-        <img class="image-cover" src="/images/jacob-proffer.svg" alt="" />
-      </div>
-
-    </div>
-  </section>
+  {{ partial "hero" (dict "headline" "404 - Page Not Found") }}
 
 {{ end }}

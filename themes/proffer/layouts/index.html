@@ -6,7 +6,7 @@
 
 {{ define "main" }}
 
-  {{ partial "home/hero" }}
+  {{ partial "hero" (dict "headline" "My name is Jacob Proffer") }}
 
   {{ partial "home/projects" . }}
 
