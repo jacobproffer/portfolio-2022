@@ -44,7 +44,9 @@
     }
 
     img {
-      mix-blend-mode: soft-light;
+      @media (prefers-reduced-motion: no-preference) {
+        mix-blend-mode: soft-light;
+      }
     }
   }
 
