@@ -79,8 +79,6 @@
 
 .circle {
   @include size(10px);
-  top: 4px;
-  right: 0;
   background-color: var(--white);
   border-radius: 50%;
 
