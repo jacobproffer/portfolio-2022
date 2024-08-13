@@ -1,10 +1,4 @@
 .section {
-  padding-bottom: calc(var(--size-100-200) - 10px);
-
-  &--padding-top {
-    padding-top: var(--size-100-200);
-  }
-
   p {
     &:first-of-type {
       margin-top: 0;
@@ -28,7 +22,7 @@
   &__list {
     --list-row-gap: var(--size-1);
     row-gap: var(--list-row-gap);
-    margin-top: var(--size-75-150);
+    margin-top: var(--size-50-100);
 
     &--margin-bottom {
       margin-bottom: var(--size-100-200);
@@ -125,5 +119,9 @@
       background: linear-gradient(360deg, var(--black) 0%, rgba(0, 0, 0, 0) 100%);
       content: "";
     }
+  }
+
+  &__graphic {
+    display: block;
   }
 }

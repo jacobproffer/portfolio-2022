@@ -8,9 +8,17 @@
 
   {{ partial "hero" (dict "headline" "My name is Jacob Proffer") }}
 
-  {{ partial "home/experience" }}
+  <div class="grid section-wrapper">
 
-  {{ partial "home/projects" . }}
+    {{ partial "home/projects" . }}
+
+    {{ partial "home/experience" }}
+
+    {{ partial "home/education" }}
+
+    {{ partial "home/social-links" . }}
+
+  </div>
 
 {{ end }}
 

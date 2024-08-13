@@ -102,9 +102,10 @@
     z-index: -1;
     transform: translateY(-50%);
   }
+}
 
-  &--footer {
-    --name-footer-spacing: clamp(0.31rem, calc(-0.02rem + 1.41vw), 1.25rem);
-    bottom: calc(var(--name-footer-spacing) * -1);
-  }
+.section-wrapper {
+  --sections-spacing: #{createFluidValue(50px, 200px)};
+  row-gap: var(--sections-spacing);
+  padding-top: var(--sections-spacing);
 }
