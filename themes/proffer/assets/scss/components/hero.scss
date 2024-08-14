@@ -16,18 +16,13 @@
     @include size(100%);
     // 148px at 1440px to 38px at 375px
     --background-margin: clamp(2.38rem, calc(-0.05rem + 10.33vw), 9.25rem);
-    grid-template-columns: 1fr 2fr 1.5fr;
+    grid-template-columns: 1;
     top: 0;
     left: 0;
   }
 
   &__image {
     @include ratio(1, 1);
-
-    &:first-of-type,
-    &:last-of-type {
-      filter: saturate(0);
-    }
 
     img {
       @media (prefers-reduced-motion: no-preference) {
@@ -45,6 +40,8 @@
   }
 
   &__copy {
+    position: relative;
+    z-index: 2;
     bottom: 36px;
     left: 50%;
     z-index: 3;
@@ -56,6 +53,8 @@
 
   &__outer-circle {
     @include size(40vw);
+    max-width: 500px;
+    max-height: 500px;
     position: absolute;
     top: 50%;
     left: calc(50% + 50px);
@@ -67,6 +66,7 @@
     transform: translate(-50%, -50%);
     transform-origin: center;
     overflow: hidden;
+    filter: url(#soft-edges);
 
     @include screen-below($tablet) {
       @include size(60vw);

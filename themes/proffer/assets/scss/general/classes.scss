@@ -109,3 +109,9 @@
   row-gap: var(--sections-spacing);
   padding-top: var(--sections-spacing);
 }
+
+.highlight {
+  position: relative;
+  z-index: 3;
+  color: var(--orange);
+}
