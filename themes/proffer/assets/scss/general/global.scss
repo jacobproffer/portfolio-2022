@@ -72,6 +72,10 @@ body {
   background-color: var(--black);
 }
 
+main {
+  overflow: hidden;
+}
+
 img {
   max-width: 100%;
 }
@@ -85,7 +89,8 @@ a {
   }
 }
 
-ul {
+ul,
+ol {
   padding: 0;
   list-style-position: inside;
 }

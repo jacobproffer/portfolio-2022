@@ -29,16 +29,16 @@ gsap.fromTo(circle,
   {
     scale: 1, // Start scale
     backgroundColor: '#fff',
-    boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+    boxShadow: '0 0 5px rgba(0,0,0,0.4)',
     xPercent: -50, // Ensure the circle remains centered horizontally
     yPercent: -50, // Ensure the circle remains centered vertically
     x: 0, // Reset horizontal position
     y: 0  // Reset vertical position
   },
   {
-    scale: 1.1, // End scale
+    scale: 1.2, // End scale
     backgroundColor: '#f20',
-    boxShadow: '0 0 20px rgba(0,0,0,0.8)',
+    boxShadow: '0 0 10px rgba(0,0,0,0.8)',
     x: '+=10', // Subtle horizontal shift for levitation
     y: '+=5', // Subtle vertical shift for levitation
     duration: 2, // Slow down the animation for a gentle effect
@@ -93,11 +93,11 @@ if (images.length > 0) {
     gsap.fromTo(image,
       {
         opacity: 1,
-        filter: `drop-shadow(0 0 10px rgba(0,0,0,0.5))`
+        filter: `drop-shadow(0 0 10px rgba(0,0,0,0.5)) blur(1px)`
       },
       {
         opacity: randomOpacity,
-        filter: `drop-shadow(0 0 10px ${randomColor})`,
+        filter: `drop-shadow(0 0 10px ${randomColor}) blur(2px)`,
         duration: 1.5,
         repeat: -1,
         yoyo: true,
