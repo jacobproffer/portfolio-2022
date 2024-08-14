@@ -57,17 +57,17 @@
 
   &__outer-circle {
     @include size(40vw);
-    position: fixed; /* Fixed positioning relative to the viewport */
+    position: absolute;
     top: 50%;
     left: calc(50% + 50px);
     border-radius: 50%;
     background-color: #fff;
     mix-blend-mode: hard-light;
-    clip-path: circle(50% at 50% 50%);
     aspect-ratio: 1;
     pointer-events: none;
-    transform: translate(-50%, -50%); /* Center the element */
-    transform-origin: center; /* Ensure transformations are applied from the center */
+    transform: translate(-50%, -50%);
+    transform-origin: center;
+    overflow: hidden;
 
     @include screen-below($tablet) {
       @include size(60vw);

@@ -29,20 +29,38 @@ gsap.fromTo(circle,
   {
     scale: 1, // Start scale
     backgroundColor: '#fff',
-    boxShadow: '0 0 10px rgba(0,0,0,0.5)'
+    boxShadow: '0 0 10px rgba(0,0,0,0.5)',
+    xPercent: -50, // Ensure the circle remains centered horizontally
+    yPercent: -50, // Ensure the circle remains centered vertically
+    x: 0, // Reset horizontal position
+    y: 0  // Reset vertical position
   },
   {
-    scale: 1.2, // End scale
+    scale: 1.1, // End scale
     backgroundColor: '#f20',
     boxShadow: '0 0 20px rgba(0,0,0,0.8)',
-    duration: 1.5,
+    x: '+=10', // Subtle horizontal shift for levitation
+    y: '+=5', // Subtle vertical shift for levitation
+    duration: 2, // Slow down the animation for a gentle effect
     repeat: -1,
     yoyo: true,
     ease: "power1.inOut"
   }
 );
 
-// Fade out the circle on scroll
+gsap.fromTo(circle,
+  {
+    boxShadow: '0 0 20px rgba(255, 255, 255, 0.5)', // Initial shadow: larger and more pronounced
+  },
+  {
+    boxShadow: '0 0 60px rgba(255, 255, 255, 1)', // End shadow: even larger and more intense
+    duration: 2,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut"
+  }
+);
+
 gsap.fromTo(circle,
   {
     opacity: 1, // Start fully visible
