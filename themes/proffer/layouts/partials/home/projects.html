@@ -19,6 +19,7 @@
               <a
                 class="section__list-link relative size-48 gsap-fade-in"
                 href="{{ .url }}"
+                data-hover="{{ .title }}"
                 target="_blank"
               >
                 {{ .title }}
@@ -33,7 +34,5 @@
 
     {{ end }}
   </div>
-
-  {{/*  {{ partial "home/background-graphic" (dict "backgroundClass" "projects") }}  */}}
 
 </section>

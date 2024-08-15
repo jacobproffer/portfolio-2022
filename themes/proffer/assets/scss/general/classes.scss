@@ -69,6 +69,7 @@
 
 .size-48 {
   --size-48-font-size: clamp(1.00rem, calc(0.30rem + 3.00vw), 3.00rem);
+  max-width: max-content;
   font-size: var(--size-48-font-size);
   text-transform: uppercase;
   line-height: 1.25;
@@ -116,7 +117,6 @@
 .nav-item {
   --item-width: 1ch;
   --item-color: var(--gray);
-  --primary-offset: 0;
   position: relative;
   display: block;
   color: var(--item-color);
@@ -124,18 +124,13 @@
   text-decoration: none;
   transition: color var(--transition-time) ease-in-out, outline var(--transition-time) ease-in-out;
 
-  &--primary {
-    &::before {
-      bottom: var(--primary-offset);
-    }
-  }
-
   @include screen-below($mobile) {
     --primary-offset: 0;
   }
 
   &::before {
     position: absolute;
+    bottom: 0;
     left: 0;
     width: var(--item-width);
     height: 2px;
