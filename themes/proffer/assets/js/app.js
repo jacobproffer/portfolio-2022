@@ -121,21 +121,65 @@ gsap.fromTo(circle,
   }
 );
 
-// Fade-in animations for elements with the 'gsap-fade-in' class
+// Function to trigger the fade-in animation
+const triggerAnimation = (element) => {
+  // GSAP animation setup
+  gsap.fromTo(element,
+    { opacity: 0, y: 30 }, // Start state
+    { opacity: 1, y: 0, duration: 1 }
+  );
+};
+
+// Handle focus event
 if (fadeIns.length > 0) {
   fadeIns.forEach((fadeIn) => {
-    gsap.from(fadeIn, {
-      y: 30,
-      autoAlpha: 0,
-      scrollTrigger: {
-        trigger: fadeIn,
-        start: 'top 90%',
-        end: 'bottom top',
-        once: true,
-      }
+    // Initially set visibility to visible but not change opacity
+    gsap.set(fadeIn, { visibility: 'visible' });
+
+    // Set up GSAP animation without scrollTrigger
+    gsap.fromTo(fadeIn,
+      { opacity: 0, y: 30 }, // Start state
+      { opacity: 1, y: 0, duration: 1, paused: true } // End state, initially paused
+    );
+
+    // Trigger animation on focus
+    fadeIn.addEventListener('focus', () => {
+      // Manually play the animation
+      gsap.fromTo(fadeIn,
+        { opacity: 0, y: 30 }, // Start state
+        { opacity: 1, y: 0, duration: 1 }
+      );
     });
   });
 }
+
+// Handle animation and focus event
+if (fadeIns.length > 0) {
+  fadeIns.forEach((fadeIn) => {
+    // Initially set visibility to visible but not change opacity
+    gsap.set(fadeIn, { visibility: 'visible' });
+
+    // GSAP animation setup (for initial viewport-based triggering)
+    gsap.fromTo(fadeIn,
+      { opacity: 0, y: 30 }, // Start state
+      { opacity: 1, y: 0, duration: 1,
+        scrollTrigger: {
+          trigger: fadeIn,
+          start: 'top 90%',
+          end: 'bottom top',
+          once: true,
+        }
+      }
+    );
+
+    // Trigger animation on focus
+    fadeIn.addEventListener('focus', () => {
+      // Trigger the animation
+      triggerAnimation(fadeIn);
+    });
+  });
+}
+
 
 // Smooth rotation for the circle
 gsap.to(circle, {
