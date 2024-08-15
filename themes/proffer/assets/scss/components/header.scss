@@ -29,7 +29,7 @@
 
   &__skip-link {
     position: fixed;
-    top: -5em;
+    top: -100%;
     left: 50%;
     transform: translateX(-50%);
     transition: top var(--transition-time) ease-in-out;
@@ -40,8 +40,14 @@
   }
 
   &__logo-wrap {
+    @include size(50px);
     display: block;
+    aspect-ratio: 1;
     font-weight: var(--weight-medium);
+  }
+
+  &__logo {
+    @include size(100%);
   }
 
   &__nav-list {
