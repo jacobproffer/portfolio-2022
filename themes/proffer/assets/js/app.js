@@ -11,6 +11,14 @@ const bar = document.querySelector('.bar');
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+ScrollTrigger.create({
+  trigger: 'main', // Adjust to your layout if needed
+  start: 'top top',
+  end: 'max',
+  onEnter: () => mainHeader.classList.add('main-header--faded'),
+  onLeaveBack: () => mainHeader.classList.remove('main-header--faded'),
+});
+
 // Function to generate a random number within a range
 function getRandom(min, max) {
   return gsap.utils.random(min, max);
@@ -78,29 +86,6 @@ gsap.fromTo(circle,
     yoyo: true,
     ease: "power1.inOut",
     transformOrigin: "center center" // Ensure scaling from the center
-  }
-);
-
-gsap.fromTo(mainHeader,
-  { opacity: 1 },
-  {
-    opacity: 0,
-    scrollTrigger: {
-      trigger: mainHeader,
-      start: 'top top',
-      end: '+=200%',
-      scrub: true,
-      onComplete: () => {
-        mainHeader.style.opacity = '0'; // Keep it hidden
-        mainHeader.classList.add('main-header--faded');
-      },
-      onUpdate: self => {
-        if (self.progress < 1) {
-          mainHeader.classList.remove('main-header--faded');
-        }
-      }
-    },
-    ease: "power1.inOut"
   }
 );
 
