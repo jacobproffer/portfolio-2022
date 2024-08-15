@@ -4,7 +4,7 @@
   max-width: var(--container);
   margin: 0 auto;
 
-  @include screen-below($mobile) {
+  @include screen-below($tablet) {
     padding: 0 var(--container-padding);
   }
 }

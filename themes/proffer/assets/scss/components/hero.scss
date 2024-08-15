@@ -1,51 +1,40 @@
 .hero {
-  // 135px at 1440px to 34px at 375px
-  --hero-top-padding: clamp(2.13rem, calc(-0.10rem + 9.48vw), 8.44rem);
-  padding-top: var(--hero-top-padding);
-  text-align: center;
+  --pseudo-opacity: 1;
+  padding-top: 200px;
 
-  &::before {
-    // 80px at 1440px to 20px at 375px
-    --bar-sizes: clamp(1.25rem, calc(-0.07rem + 5.63vw), 5.00rem);
-    position: absolute;
-    top: 0;
-    right: 8.5%;
-    z-index: 2;
-    width: var(--bar-sizes);
-    height: 100%;
-    background-color: var(--black);
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    content: "";
+  @include screen-above($tablet) {
+    height: 100vh;
   }
 
-  &__background-wrap {
-    // 75px at 1440px to 19px at 375px
-    --name-position: clamp(1.19rem, calc(-0.04rem + 5.26vw), 4.69rem);
+  @include screen-below($tablet) {
+    --pseudo-opacity: 0;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-bottom: var(--size-5);
   }
 
   &__background {
+    @include size(100%);
     // 148px at 1440px to 38px at 375px
     --background-margin: clamp(2.38rem, calc(-0.05rem + 10.33vw), 9.25rem);
-    grid-template-columns: 1fr 2fr 1.5fr;
-    margin-top: var(--background-margin);
-
-    @include screen-above($mobile) {
-      margin-left: var(--container-gutter);
-    }
+    grid-template-columns: 1;
+    top: 0;
+    left: 0;
   }
 
   &__image {
-    @include ratio(770, 900);
-
-    &:first-of-type,
-    &:last-of-type {
-      filter: saturate(0);
-    }
+    @include ratio(1, 1);
 
     img {
       @media (prefers-reduced-motion: no-preference) {
-        mix-blend-mode: soft-light;
+        mix-blend-mode: darken;
       }
     }
   }
@@ -59,6 +48,8 @@
   }
 
   &__copy {
+    position: relative;
+    z-index: 2;
     bottom: 36px;
     left: 50%;
     z-index: 3;
@@ -66,5 +57,60 @@
     width: 100%;
     margin: 0;
     transform: translateX(-50%);
+  }
+
+  &__outer-circle {
+    @include size(40vw);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    pointer-events: none;
+    overflow: hidden;
+    transform-origin: center center;
+
+    @include screen-above($tablet) {
+      left: calc(50% + 50px);
+      max-width: 500px;
+      max-height: 500px;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border-radius: 50%;
+      opacity: var(--pseudo-opacity);
+      content: "";
+    }
+
+    &::before {
+      @include size(4vw);
+      background-color: var(--black);
+      transform: translate(-50%, -50%);
+      clip-path: polygon(
+        50% 0%,
+        70% 10%,
+        90% 30%,
+        80% 50%,
+        90% 70%,
+        70% 90%,
+        50% 100%,
+        30% 90%,
+        10% 70%,
+        20% 50%,
+        10% 30%,
+        30% 10%
+      );
+    }
+
+    &::after {
+      @include size(100%);
+      border: 8px solid var(--orange);
+      transform: translate(-50%, -50%);
+      mix-blend-mode: exclusion;
+    }
   }
 }

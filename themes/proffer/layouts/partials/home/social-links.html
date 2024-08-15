@@ -2,7 +2,7 @@
   <div class="container gsap-fade-in">
     <div class="section__grid relative">
       <div>
-        <h2 class="section__headline">Social</h2>
+        <h2 class="section__headline">Elsewhere</h2>
       </div>
       <div class="circle"></div>
     </div>
@@ -20,6 +20,7 @@
                 class="section__list-link relative size-48 gsap-fade-in"
                 href="{{ .URL }}"
                 target="_blank"
+                data-hover="{{ .Name }}"
               >
                 {{ .Name }}
               </a>

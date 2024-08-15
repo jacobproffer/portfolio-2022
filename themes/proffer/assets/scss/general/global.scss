@@ -9,6 +9,7 @@
 
   --white: #fff;
   --black: #000;
+  --orange: #ff683f;
   --border: #b9b9b9;
 
   --size-0: #{createFluidValue(8px, 10px)};
@@ -21,6 +22,12 @@
   --size-75-150: #{createFluidValue(75px, 150px)};
   --size-125-175: #{createFluidValue(125px, 175px)};
   --size-100-200: #{createFluidValue(125px, 200px)};
+
+  --transition-time: 225ms;
+
+  --outline-size: max(2px, .08em);
+  --outline-style: dashed;
+  --outline-color: currentColor;
 
   @include screen-below($desktopSm) {
     --container: 1280px;
@@ -35,10 +42,6 @@
   }
 
   @include screen-below($tablet) {
-    --container: 608px;
-  }
-
-  @include screen-below($mobile) {
     --container: 100%;
   }
 }
@@ -76,6 +79,10 @@ body {
   background-color: var(--black);
 }
 
+main {
+  overflow: hidden;
+}
+
 img {
   max-width: 100%;
 }
@@ -89,7 +96,8 @@ a {
   }
 }
 
-ul {
+ul,
+ol {
   padding: 0;
   list-style-position: inside;
 }

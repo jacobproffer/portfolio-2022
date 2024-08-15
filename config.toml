@@ -11,9 +11,9 @@ enableRobotsTXT = true
 [menu]
 
   [[menu.social]]
-    name = "github.com/jacobproffer"
-    url = "https://github.com/jacobproffer/"
+    name = "dribbble.com"
+    url = "https://dribbble.com/jacobproffer/"
 
   [[menu.social]]
-    name = "dribbble.com/jacobproffer"
-    url = "https://dribbble.com/jacobproffer/"
+    name = "wanikani.com"
+    url = "https://www.wanikani.com/users/chongo"

@@ -31,33 +31,28 @@
   overflow: hidden;
 }
 
-.gsap-fade-in {
-  visibility: hidden;
+// .gsap-fade-in {
+//   visibility: hidden;
+// }
+
+.bar {
+  position: absolute;
+  width: 10px;
+  pointer-events: none;
+  bottom: 0;
+  left: calc(var(--container-gutter) - 50px);
+  z-index: 2;
+  border-width: 0 0 0 10px;
+  border-style: solid;
+  border-color: var(--border);
+  filter: drop-shadow(8px 10px 8px var(--black));
+
+  @include screen-below($mobile) {
+    display: none;
+  }
 }
 
 .wrap {
-  &::before,
-  &::after {
-    position: absolute;
-    pointer-events: none;
-    content: "";
-  }
-
-  &::after {
-    @include size(100%);
-    top: 0;
-    left: calc(var(--container-gutter) - 50px);
-    z-index: 2;
-    border-width: 0 0 0 10px;
-    border-style: solid;
-    border-color: var(--border);
-    filter: drop-shadow(8px 10px 8px var(--black));
-
-    @include screen-below($mobile) {
-      display: none;
-    }
-  }
-
   &::before {
     @include size(300%);
     position: fixed;
@@ -67,11 +62,14 @@
     background-image: url("/images/noise.svg");
     transform: translateX(50%);
     opacity: .5;
+    pointer-events: none;
+    content: "";
   }
 }
 
 .size-48 {
   --size-48-font-size: clamp(1.00rem, calc(0.30rem + 3.00vw), 3.00rem);
+  max-width: max-content;
   font-size: var(--size-48-font-size);
   text-transform: uppercase;
   line-height: 1.25;
@@ -108,4 +106,49 @@
   --sections-spacing: #{createFluidValue(50px, 200px)};
   row-gap: var(--sections-spacing);
   padding-top: var(--sections-spacing);
+}
+
+.highlight {
+  position: relative;
+  z-index: 3;
+  color: var(--orange);
+}
+
+.nav-item {
+  --item-width: 1ch;
+  --item-color: var(--gray);
+  position: relative;
+  display: block;
+  color: var(--item-color);
+  letter-spacing: .2rem;
+  text-decoration: none;
+  transition: color var(--transition-time) ease-in-out, outline var(--transition-time) ease-in-out;
+
+  @include screen-below($mobile) {
+    --primary-offset: 0;
+  }
+
+  &::before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: var(--item-width);
+    height: 2px;
+    background: var(--item-background, var(--white));
+    opacity: var(--item-border-opacity, 1);
+    transition: width var(--transition-time) ease-in-out;
+    content: "";
+  }
+
+  &[aria-current="page"] {
+    --item-width: 100%;
+    --item-background: var(--orange);
+    --item-color: var(--white);
+  }
+
+  @include hover {
+    --item-width: 100%;
+    --item-background: var(--orange);
+    --item-color: var(--white);
+  }
 }

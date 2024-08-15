@@ -1,0 +1,31 @@
+<div
+  class="main-header"
+  data-header
+>
+
+  <div class="container">
+
+    <div class="main-header__grid relative grid">
+
+      <header>
+
+        <a
+          class="main-header__skip-link button"
+          href="#content"
+        >
+          Skip to Main Content
+        </a>
+
+        <div class="main-header__logo-wrap link-padding">
+          {{ partial "logo" }}
+        </div>
+
+      </header>
+
+      {{ partial "navigation" . }}
+
+    </div>
+
+  </div>
+
+</div>
