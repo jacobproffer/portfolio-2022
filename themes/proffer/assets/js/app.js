@@ -1,14 +1,85 @@
+// Cache DOM elements
 const mainHeader = document.querySelector('[data-header]');
 const mobileNavigationTrigger = document.querySelector('[data-navigation-toggle]');
 const mobileNavigation = document.querySelector('[data-navigation-list]');
 const fadeIns = document.querySelectorAll('.gsap-fade-in');
+const circleWrap = document.querySelector('.hero__outer-circle-wrap');
 const circle = document.querySelector('.hero__outer-circle');
 const image = document.querySelector('.hero__image');
+const bar = document.querySelector('.bar');
 
+// Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Ensure elements start fully visible
-gsap.set([mainHeader, circle], { opacity: 1 });
+// Function to generate a random number within a range
+function getRandom(min, max) {
+  return gsap.utils.random(min, max);
+}
+
+// Create a GSAP timeline
+const tl = gsap.timeline();
+
+gsap.set(circleWrap, {
+  opacity: 0
+});
+
+// Add animations to the timeline
+tl.fromTo(bar,
+  { height: '0%' }, // Start from 0 height
+  {
+    height: '100%', // End at 100% height
+    duration: 1, // Duration of the animation
+    ease: 'power1.out' // Easing function
+  })
+  .to(circleWrap,
+    {
+      opacity: 1, // Fade in the circleWrap
+      duration: 1, // Duration of the fade-in animation
+      ease: 'power1.out', // Easing function
+    },
+    '-=1' // Start the circleWrap animation 0.5 seconds before the bar animation ends
+  );
+
+// Center the circle initially and ensure correct transform origin
+gsap.set(circle, {
+  xPercent: -50,
+  yPercent: -50,
+  x: "50%",
+  y: "50%",
+  transformOrigin: "center center"
+});
+
+// Scale-in animation for the circle on page load
+gsap.from(circle, {
+  scale: 0, // Start scaled down
+  duration: 1.5, // Duration of the scaling animation
+  ease: "power1.out", // Easing function
+  transformOrigin: "center center", // Ensure scaling from the center
+  immediateRender: true // Ensures the animation starts immediately on page load
+});
+
+// Circle animation with random values, centered
+gsap.fromTo(circle,
+  {
+    scale: 1,
+    backgroundColor: '#fff',
+    boxShadow: '0 0 20px rgba(255, 104, 63, 0.5)', // Initial shadow
+    x: 0, // No horizontal movement
+    y: 0  // No vertical movement
+  },
+  {
+    scale: () => getRandom(1.1, 1.3), // Randomize scale
+    backgroundColor: '#f20',
+    boxShadow: '0 0 60px rgba(255, 104, 63, 1)', // End shadow
+    x: () => getRandom(-10, 10), // Constrain horizontal movement
+    y: () => getRandom(-10, 10), // Constrain vertical movement
+    duration: () => getRandom(1.8, 2.2), // Randomize duration
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut",
+    transformOrigin: "center center" // Ensure scaling from the center
+  }
+);
 
 // Fade-out animation for the main header
 gsap.fromTo(mainHeader,
@@ -50,7 +121,7 @@ gsap.fromTo(circle,
   }
 );
 
-// Fade-in animations
+// Fade-in animations for elements with the 'gsap-fade-in' class
 if (fadeIns.length > 0) {
   fadeIns.forEach((fadeIn) => {
     gsap.from(fadeIn, {
@@ -66,7 +137,7 @@ if (fadeIns.length > 0) {
   });
 }
 
-// Smooth rotation for circle
+// Smooth rotation for the circle
 gsap.to(circle, {
   rotation: 360, // Rotate 360 degrees
   duration: 100, // Slow rotation over 100 seconds
@@ -75,15 +146,7 @@ gsap.to(circle, {
   yoyo: true // Reverse direction
 });
 
-// Apply SVG filter distortion to circle and image
-gsap.to([circle, image], {
-  duration: 0.5,
-  attr: { filter: 'url(#distortionFilter)' },
-  repeat: -1,
-  yoyo: true,
-  ease: "power2.inOut",
-  repeatDelay: 0.5 // Delay between glitches
-});
+// ** Navigation Functions **
 
 // Navigation focus trapping
 function navigationFocus() {

@@ -5,7 +5,7 @@
   position: fixed;
   z-index: 2;
   top: 0;
-  padding: var(--size-4) 0;
+  padding: #{createFluidValue(16px, 50px)} 0;
   background: rgba(0, 0, 0, 0);
 
   &--faded {
@@ -41,11 +41,6 @@
   &__logo-wrap {
     display: block;
     font-weight: var(--weight-medium);
-    transition: color var(--transition-time) ease-in-out;
-
-    @include hover {
-      color: var(--orange);
-    }
   }
 
   &__nav-list {

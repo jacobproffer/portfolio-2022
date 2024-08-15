@@ -21,6 +21,10 @@
     margin: 0;
   }
 
+  &__subheadline-wrap {
+    row-gap: var(--size-1);
+  }
+
   &__list {
     --list-row-gap: var(--size-1);
     row-gap: var(--list-row-gap);

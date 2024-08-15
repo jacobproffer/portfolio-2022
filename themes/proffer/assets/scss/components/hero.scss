@@ -1,10 +1,18 @@
 .hero {
-  // 135px at 1440px to 34px at 375px
-  --hero-top-padding: clamp(2.13rem, calc(-0.10rem + 9.48vw), 8.44rem);
-  padding-top: var(--hero-top-padding);
-  height: 100vh;
+  --pseudo-opacity: 1;
+  padding-top: 200px;
+
+  @include screen-above($tablet) {
+    height: 100vh;
+  }
+
+  @include screen-below($tablet) {
+    --pseudo-opacity: 0;
+  }
 
   &__container {
+    position: relative;
+    z-index: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -53,27 +61,34 @@
 
   &__outer-circle {
     @include size(40vw);
-    max-width: 500px;
-    max-height: 500px;
     position: absolute;
     top: 50%;
-    left: calc(50% + 50px);
-    border-radius: 50%;
-    background-color: #fff;
-    mix-blend-mode: hard-light;
+    left: 50%;
     aspect-ratio: 1;
+    border-radius: 50%;
     pointer-events: none;
-    transform: translate(-50%, -50%);
-    transform-origin: center;
     overflow: hidden;
+    transform-origin: center center;
 
-    &::before {
-      @include size(4vw);
+    @include screen-above($tablet) {
+      left: calc(50% + 50px);
+      max-width: 500px;
+      max-height: 500px;
+    }
+
+    &::before,
+    &::after {
       position: absolute;
       top: 50%;
       left: 50%;
-      background-color: var(--black);
       border-radius: 50%;
+      opacity: var(--pseudo-opacity);
+      content: "";
+    }
+
+    &::before {
+      @include size(4vw);
+      background-color: var(--black);
       transform: translate(-50%, -50%);
       clip-path: polygon(
         50% 0%,
@@ -89,28 +104,13 @@
         10% 30%,
         30% 10%
       );
-      content: "";
     }
 
     &::after {
       @include size(100%);
-      position: absolute;
-      top: 50%;
-      left: 50%;
       border: 8px solid var(--orange);
-      border-radius: 50%;
       transform: translate(-50%, -50%);
       mix-blend-mode: exclusion;
-      content: "";
-    }
-
-    @include screen-below($tablet) {
-      @include size(60vw);
-      left: 50%;
-    }
-
-    @include screen-below($mobile) {
-      @include size(70vw);
     }
   }
 }
