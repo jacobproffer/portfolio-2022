@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
-    padding-bottom: #{createFluidValue(50px, 150px)};
+    padding-bottom: var(--size-5);
   }
 
   &__background {
@@ -66,7 +66,43 @@
     transform: translate(-50%, -50%);
     transform-origin: center;
     overflow: hidden;
-    filter: url(#soft-edges);
+
+    &::before {
+      @include size(4vw);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: var(--black);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      clip-path: polygon(
+        50% 0%,
+        70% 10%,
+        90% 30%,
+        80% 50%,
+        90% 70%,
+        70% 90%,
+        50% 100%,
+        30% 90%,
+        10% 70%,
+        20% 50%,
+        10% 30%,
+        30% 10%
+      );
+      content: "";
+    }
+
+    &::after {
+      @include size(100%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 8px solid var(--orange);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: exclusion;
+      content: "";
+    }
 
     @include screen-below($tablet) {
       @include size(60vw);

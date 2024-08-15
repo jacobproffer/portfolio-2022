@@ -1,15 +1,56 @@
+const mainHeader = document.querySelector('[data-header]');
+const mobileNavigationTrigger = document.querySelector('[data-navigation-toggle]');
+const mobileNavigation = document.querySelector('[data-navigation-list]');
 const fadeIns = document.querySelectorAll('.gsap-fade-in');
 const circle = document.querySelector('.hero__outer-circle');
 const image = document.querySelector('.hero__image');
 
 gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.create({
-  trigger: 'main',
-  start: 'top top',
-  end: 'max',
-});
+// Ensure elements start fully visible
+gsap.set([mainHeader, circle], { opacity: 1 });
 
+// Fade-out animation for the main header
+gsap.fromTo(mainHeader,
+  { opacity: 1 }, // Start fully visible
+  {
+    opacity: 0, // Fade out to fully transparent
+    scrollTrigger: {
+      trigger: mainHeader,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: true, // Smooth transition based on scroll position
+      onUpdate: self => {
+        // Add or remove the 'main-header--faded' class based on opacity
+        if (self.progress === 1) {
+          mainHeader.classList.add('main-header--faded');
+        } else {
+          mainHeader.classList.remove('main-header--faded');
+        }
+      }
+    },
+    duration: 1.5,
+    ease: "power1.inOut"
+  }
+);
+
+// Fade-out animation for the circle
+gsap.fromTo(circle,
+  { opacity: 1 }, // Start fully visible
+  {
+    opacity: 0, // Fade out to fully transparent
+    scrollTrigger: {
+      trigger: circle,
+      start: 'top center',
+      end: 'bottom top',
+      scrub: true, // Smooth transition based on scroll position
+    },
+    duration: 1.5,
+    ease: "power1.inOut"
+  }
+);
+
+// Fade-in animations
 if (fadeIns.length > 0) {
   fadeIns.forEach((fadeIn) => {
     gsap.from(fadeIn, {
@@ -21,69 +62,73 @@ if (fadeIns.length > 0) {
         end: 'bottom top',
         once: true,
       }
-    })
+    });
   });
 }
 
-gsap.fromTo(circle,
-  {
-    scale: 1,
-    backgroundColor: '#fff',
-    boxShadow: '0 0 20px rgba(255, 104, 63, 0.5)', // Initial shadow: larger and more pronounced
-    xPercent: -50,
-    yPercent: -50,
-    x: 0,
-    y: 0
-  },
-  {
-    scale: getRandom(1.1, 1.3), // Slightly randomize the scaling
-    backgroundColor: '#f20',
-    boxShadow: '0 0 60px rgba(255, 104, 63, 1)', // End shadow: even larger and more intense
-    x: `+=${getRandom(8, 12)}`, // Randomize the horizontal shift
-    y: `+=${getRandom(3, 7)}`, // Randomize the vertical shift
-    duration: getRandom(1.8, 2.2), // Slightly randomize the duration
-    repeat: -1,
-    yoyo: true,
-    ease: "power1.inOut"
-  }
-);
-
-gsap.fromTo(circle,
-  {
-    opacity: 1, // Start fully visible
-  },
-  {
-    opacity: 0, // End fully transparent
-    scrollTrigger: {
-      trigger: circle,
-      start: 'top center', // When the top of the circle hits the center of the viewport
-      end: 'bottom top', // When the bottom of the circle hits the top of the viewport
-      scrub: true, // Smooth transition based on scroll position
-    },
-    duration: 1.5,
-    ease: "power1.inOut"
-  }
-);
-
+// Smooth rotation for circle
 gsap.to(circle, {
+  rotation: 360, // Rotate 360 degrees
+  duration: 100, // Slow rotation over 100 seconds
+  repeat: -1, // Repeat indefinitely
+  ease: "none", // Linear rotation
+  yoyo: true // Reverse direction
+});
+
+// Apply SVG filter distortion to circle and image
+gsap.to([circle, image], {
   duration: 0.5,
-  attr: { filter: 'url(#distortionFilter)' }, // Apply the SVG filter
+  attr: { filter: 'url(#distortionFilter)' },
   repeat: -1,
   yoyo: true,
   ease: "power2.inOut",
   repeatDelay: 0.5 // Delay between glitches
 });
 
-// Function to generate a random number within a range
-function getRandom(min, max) {
-  return Math.random() * (max - min) + min;
+// Navigation focus trapping
+function navigationFocus() {
+  const focusableElements = mobileNavigation.querySelectorAll('a[href], button');
+  const firstFocusableElement = focusableElements[0];
+  const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+  mobileNavigation.addEventListener('keydown', function(e) {
+    if (e.target === firstFocusableElement && e.key === 'Tab' && e.shiftKey) {
+      e.preventDefault();
+      lastFocusableElement.focus();
+    } else if (e.target === lastFocusableElement && e.key === 'Tab' && !e.shiftKey) {
+      e.preventDefault();
+      firstFocusableElement.focus();
+    }
+  });
 }
 
-// Apply and animate SVG distortion filter
-gsap.to(image, {
-  duration: 0.4,
-  attr: { filter: 'url(#distortionFilter)' }, // Apply the SVG filter
-  repeat: -1,
-  yoyo: true,
-  ease: "power2.inOut",
+// Handle escape key to close navigation
+function handleEscape() {
+  document.addEventListener('keyup', function(e) {
+    if (e.key === 'Escape' && mobileNavigation.classList.contains('open')) {
+      mobileNavigationTrigger.setAttribute('aria-expanded', 'false');
+      mobileNavigationTrigger.focus();
+      mobileNavigation.classList.remove('open');
+      mainHeader.classList.remove('main-header--navigation-open');
+      mobileNavigationTrigger.innerHTML = "Open Menu";
+    }
+  });
+}
+
+// Mobile navigation toggle
+mobileNavigationTrigger.addEventListener("click", function() {
+  mainHeader.classList.toggle('main-header--navigation-open');
+  mobileNavigation.classList.toggle("open");
+  this.classList.toggle("nav-open");
+
+  navigationFocus();
+  handleEscape();
+
+  if (mobileNavigation.classList.contains('open')) {
+    this.setAttribute('aria-expanded', 'true');
+    this.innerHTML = "Close Menu";
+  } else {
+    this.setAttribute('aria-expanded', 'false');
+    this.innerHTML = "Open Menu";
+  }
 });
