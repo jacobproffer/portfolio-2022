@@ -81,26 +81,25 @@ gsap.fromTo(circle,
   }
 );
 
-// Fade-out animation for the main header
 gsap.fromTo(mainHeader,
-  { opacity: 1 }, // Start fully visible
+  { opacity: 1 },
   {
-    opacity: 0, // Fade out to fully transparent
+    opacity: 0,
     scrollTrigger: {
       trigger: mainHeader,
       start: 'top top',
-      end: 'bottom top',
-      scrub: true, // Smooth transition based on scroll position
+      end: '+=200%',
+      scrub: true,
+      onComplete: () => {
+        mainHeader.style.opacity = '0'; // Keep it hidden
+        mainHeader.classList.add('main-header--faded');
+      },
       onUpdate: self => {
-        // Add or remove the 'main-header--faded' class based on opacity
-        if (self.progress === 1) {
-          mainHeader.classList.add('main-header--faded');
-        } else {
+        if (self.progress < 1) {
           mainHeader.classList.remove('main-header--faded');
         }
       }
     },
-    duration: 1.5,
     ease: "power1.inOut"
   }
 );
