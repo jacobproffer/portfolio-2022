@@ -11,6 +11,14 @@ const bar = document.querySelector('.bar');
 // Register GSAP ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
+ScrollTrigger.create({
+  trigger: 'main', // Adjust to your layout if needed
+  start: 'top top',
+  end: 'max',
+  onEnter: () => mainHeader.classList.add('main-header--faded'),
+  onLeaveBack: () => mainHeader.classList.remove('main-header--faded'),
+});
+
 // Function to generate a random number within a range
 function getRandom(min, max) {
   return gsap.utils.random(min, max);
@@ -78,30 +86,6 @@ gsap.fromTo(circle,
     yoyo: true,
     ease: "power1.inOut",
     transformOrigin: "center center" // Ensure scaling from the center
-  }
-);
-
-// Fade-out animation for the main header
-gsap.fromTo(mainHeader,
-  { opacity: 1 }, // Start fully visible
-  {
-    opacity: 0, // Fade out to fully transparent
-    scrollTrigger: {
-      trigger: mainHeader,
-      start: 'top top',
-      end: 'bottom top',
-      scrub: true, // Smooth transition based on scroll position
-      onUpdate: self => {
-        // Add or remove the 'main-header--faded' class based on opacity
-        if (self.progress === 1) {
-          mainHeader.classList.add('main-header--faded');
-        } else {
-          mainHeader.classList.remove('main-header--faded');
-        }
-      }
-    },
-    duration: 1.5,
-    ease: "power1.inOut"
   }
 );
 

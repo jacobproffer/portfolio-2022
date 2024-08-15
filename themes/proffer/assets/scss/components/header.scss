@@ -9,6 +9,8 @@
   background-color: var(--header-background);
 
   &--faded {
+    opacity: 0;
+    transition: opacity var(--transition-time) ease-in-out;
     pointer-events: none;
   }
 
