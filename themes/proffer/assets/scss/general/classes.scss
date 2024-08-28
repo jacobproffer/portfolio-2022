@@ -37,11 +37,15 @@
   pointer-events: none;
   bottom: 0;
   left: calc(var(--container-gutter) - 50px);
-  z-index: 2;
+  z-index: 3;
   border-width: 0 0 0 10px;
   border-style: solid;
   border-color: var(--border);
   filter: drop-shadow(8px 10px 8px var(--black));
+
+  @media (prefers-reduced-motion) {
+    height: 100%;
+  }
 
   @include screen-below($mobile) {
     display: none;
@@ -143,8 +147,11 @@
   }
 
   @include hover {
-    --item-width: 100%;
     --item-background: var(--orange);
     --item-color: var(--white);
+
+    @media (prefers-reduced-motion: no-preference) {
+      --item-width: 100%;
+    }
   }
 }
