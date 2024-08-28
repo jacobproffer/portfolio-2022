@@ -19,6 +19,10 @@
     height: 100%;
   }
 
+  @media (prefers-reduced-motion) {
+    --header-background: var(--black);
+  }
+
   &__grid {
     align-items: center;
     grid-template-columns: max-content max-content;
