@@ -53,13 +53,13 @@
 }
 
 ::selection {
-  color: var(--white);
+  color: var(--orange);
   background-color: var(--black);
 }
 
 * {
   &:focus {
-    outline: 1px solid var(--white);
+    outline: 1px solid var(--orange);
   }
 }
 
